@@ -1,25 +1,20 @@
 import { useState } from "react";
-import axios from "axios";
+import postMessage from "../utils/postMessage";
 
 const Home = () => {
   const [encryptedContent, setMessage] = useState("");
-
+  const [password, setPassword] = useState("12345678");
   const onChange = (event) => {
     setMessage(event.target.value);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    const baseURL =
-      import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
-    axios
-      .post(import.meta.env.VITE_APP_SERVER_URL + "/api/messages/", {
-        encryptedContent,
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.error(err));
+    try {
+      postMessage(encryptedContent, password);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
