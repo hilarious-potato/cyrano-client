@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Spinner from "../components/Spinner";
 
 const Message = () => {
   const { messageId } = useParams();
@@ -19,14 +20,13 @@ const Message = () => {
   };
   useEffect(() => {
     loadMessage();
-  }),
-    [messageId];
+  }, [messageId]);
 
   const renderMessage = () => {
     return <article>Message: {message.encryptedContent}</article>;
   };
 
-  return <div>{message ? renderMessage() : "loading"}</div>;
+  return <div>{message ? renderMessage() : <Spinner />}</div>;
 };
 
 export default Message;

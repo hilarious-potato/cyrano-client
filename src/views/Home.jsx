@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <section className="Home">
       <header>
-        <h2 className="body-font font-heading font-extrabold">
+        <h2 className="body-font font-heading font-extrabold text-secondary">
           Create a Message
         </h2>
       </header>
@@ -40,7 +40,7 @@ const Home = () => {
           }}
           type="text"
         />
-        <button className="font-body" type="submit">
+        <button className="font-body text-warning" type="submit">
           create
         </button>
       </form>
