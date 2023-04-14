@@ -25,7 +25,9 @@ const Home = () => {
   return (
     <section className="Home">
       <header>
-        <h2 className="body-font font-oswald">Create a Message</h2>
+        <h2 className="body-font font-heading font-extrabold">
+          Create a Message
+        </h2>
       </header>
       <form onSubmit={(e) => onSubmit(e)}>
         {/* <label htmlFor="encryptedContent">input message</label> */}
@@ -38,7 +40,9 @@ const Home = () => {
           }}
           type="text"
         />
-        <button type="submit">create</button>
+        <button className="font-body" type="submit">
+          create
+        </button>
       </form>
     </section>
   );

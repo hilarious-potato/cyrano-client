@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <header>
-      <h1 className="body-font font-oswald text-4xl">The Cyrano Project</h1>
+      <h1 className="body-font font-heading text-4xl">The Cyrano Project</h1>
     </header>
   );
 };
