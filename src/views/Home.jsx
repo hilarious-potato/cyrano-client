@@ -1,5 +1,6 @@
 import { useState } from "react";
 import postMessage from "../utils/postMessage";
+import Inputfield from "../components/Inputfield";
 
 const Home = () => {
   const [encryptedContent, setMessage] = useState("");
@@ -26,7 +27,9 @@ const Home = () => {
       </header>
       <form onSubmit={(e) => onSubmit(e)}>
         {/* <label htmlFor="encryptedContent">input message</label> */}
-        <input
+        <Inputfield
+          className="my-4"
+          label="Message"
           name="encryptedContent"
           placeholder="say something …"
           value={encryptedContent}
@@ -34,6 +37,7 @@ const Home = () => {
             onChange(e);
           }}
           type="text"
+          required
         />
         <button className="font-body text-warning" type="submit">
           create
