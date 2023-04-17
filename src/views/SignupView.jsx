@@ -71,12 +71,6 @@ const SignupView = (props) => {
           required
         />
         <div className="button-container absolute right-0">
-          <Button className="mr-2" type="reset">
-            standard button
-          </Button>
-          <Button className="mr-2" type="reset" warning>
-            warning
-          </Button>
           <Button className="mr-2" type="reset" secondary>
             reset secondary
           </Button>
