@@ -1,25 +1,21 @@
 import { useState } from "react";
-import axios from "axios";
+import postMessage from "../utils/postMessage";
+import Inputfield from "../components/Inputfield";
 
 const Home = () => {
   const [encryptedContent, setMessage] = useState("");
-
+  const [password, setPassword] = useState("12345678");
   const onChange = (event) => {
     setMessage(event.target.value);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    const baseURL =
-      import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
-    axios
-      .post(import.meta.env.VITE_APP_SERVER_URL + "/api/messages/", {
-        encryptedContent,
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.error(err));
+    try {
+      postMessage(encryptedContent, password);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -31,7 +27,9 @@ const Home = () => {
       </header>
       <form onSubmit={(e) => onSubmit(e)}>
         {/* <label htmlFor="encryptedContent">input message</label> */}
-        <input
+        <Inputfield
+          className="my-4"
+          label="Message"
           name="encryptedContent"
           placeholder="say something …"
           value={encryptedContent}
@@ -39,6 +37,7 @@ const Home = () => {
             onChange(e);
           }}
           type="text"
+          required
         />
         <button className="font-body text-warning" type="submit">
           create
