@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
 import Message from "./views/Message";
 import Header from "./components/Header";
-import SignupView from "./components/SignupDialog";
 
 function App() {
   return (
@@ -11,7 +10,6 @@ function App() {
       <main className="px-16">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignupView />} />
           <Route path="/messages/:messageId" element={<Message />} />
         </Routes>
       </main>
