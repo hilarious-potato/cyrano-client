@@ -65,21 +65,21 @@ function CreateMessage() {
             <p>Your message was encrypted and created</p>
             <OutputField
               label="Link to view message"
-              value={`${import.meta.env.VITE_APP_SERVER_URL}/api/messages/${
+              value={`${import.meta.env.VITE_CLIENT_SERVER_URL}/messages/${
                 postedMessage.messageId
               }`}
             />
             <OutputField
               label="Share Link with Password"
-              value={`${import.meta.env.VITE_APP_SERVER_URL}/api/messages/${
+              value={`${import.meta.env.VITE_CLIENT_SERVER_URL}/messages/${
                 postedMessage.messageId
-              }#${postedMessage.password}`}
+              }#${postedMessage.messagePassword}`}
             />
             <OutputField
               label="Edit Link"
-              value={`${
-                import.meta.env.VITE_APP_SERVER_URL
-              }/api/messages/edit/${postedMessage.editId}`}
+              value={`${import.meta.env.VITE_CLIENT_SERVER_URL}/messages/edit/${
+                postedMessage.editId
+              }`}
             />
           </>
         )}
