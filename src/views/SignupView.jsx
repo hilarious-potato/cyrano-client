@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Inputfield from "../components/Inputfield";
 import Button from "../components/Button";
+import axios from "axios";
 
 const SignupView = (props) => {
   const [user, setUser] = useState({
-    userName: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -19,6 +20,16 @@ const SignupView = (props) => {
     event.preventDefault();
 
     console.log(user);
+
+    const baseURL =
+      import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
+
+    axios
+      .post(baseURL + "/auth/signup", user)
+      .then((result) => {
+        console.log("result: ", result);
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -31,8 +42,8 @@ const SignupView = (props) => {
       <form onSubmit={(e) => onSubmit(e)}>
         <Inputfield
           className="my-4"
-          name="userName"
-          value={user.userName}
+          name="name"
+          value={user.name}
           onChange={(e) => onChange(e)}
           label="user name"
           type="text"

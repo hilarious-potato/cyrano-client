@@ -31,11 +31,19 @@ const Button = (props) => {
     setButtonClassName(concatClassName());
   }, []);
 
+  const onClick = (event) => {
+    if (props.onClick) {
+      props.onClick(event);
+    } else {
+      return null;
+    }
+  };
+
   return (
     <button
       type={props.type || "button"}
       className={buttonClassName}
-      onClick={(e) => props.onClick(e)}
+      onClick={(e) => onClick(e)}
     >
       {props.children}
     </button>
