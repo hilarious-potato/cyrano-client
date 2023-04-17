@@ -7,12 +7,19 @@ async function fetchMessage(id, password) {
     const messageFromDb = await axios.get(
       import.meta.env.VITE_APP_SERVER_URL + "/api/messages/" + id
     );
-    console.log(messageFromDb);
-    const decryptedMessage = await decryptMessage(
-      messageFromDb.data.encryptedContent,
-      password
-    );
-    return decryptedMessage;
+    if (messageFromDb) {
+      console.log(messageFromDb);
+      const decryptedMessage = await decryptMessage(
+        messageFromDb.data.encryptedContent,
+        password
+      );
+      if (decryptedMessage) {
+        return decryptedMessage;
+      }
+      return "Wrong Password";
+    } else {
+      return "Message not found on server";
+    }
   } catch (error) {
     console.error(error);
   }
