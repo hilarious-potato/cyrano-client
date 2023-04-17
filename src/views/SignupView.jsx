@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Inputfield from "../components/Inputfield";
+import Outputfield from "../components/Outputfield";
 import Button from "../components/Button";
 import axios from "axios";
 
@@ -35,7 +36,7 @@ const SignupView = (props) => {
   return (
     <section className="Signup relative">
       <header>
-        <h2 className="font-body font-bold text-secondary">
+        <h2 className="font-heading font-bold text-secondary">
           create an account
         </h2>
       </header>
@@ -72,10 +73,10 @@ const SignupView = (props) => {
         />
         <div className="button-container absolute right-0">
           <Button className="mr-2" type="reset" secondary>
-            reset secondary
+            reset
           </Button>
           <Button type="submit" primary>
-            submit primary
+            submit
           </Button>
         </div>
       </form>
