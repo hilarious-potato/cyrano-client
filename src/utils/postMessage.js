@@ -9,8 +9,6 @@ async function postMessage(message, password) {
       import.meta.env.VITE_APP_SERVER_URL + "/api/messages",
       data
     );
-    console.log(newMessage);
-    console.log(JSON.parse(newMessage.data.encryptedContent));
     return {
       messageId: newMessage.data._id,
       editId: newMessage.data.editId,
