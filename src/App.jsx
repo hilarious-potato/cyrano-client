@@ -1,9 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./views/Home";
 import Message from "./views/Message";
 import Header from "./components/Header";
-import SignupView from "./views/SignupView";
-
+import Home from "./Views/Home";
+import SignupView from "./Views/SignupView";
 function App() {
   return (
     <div className="App h-screen w-screen bg-gray-800 text-gray-200">
