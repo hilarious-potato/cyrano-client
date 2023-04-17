@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Inputfield from "../components/Inputfield";
-import Form from "../components/Form";
+import CustomForm from "../components/CustomForm";
 import axios from "axios";
 
 const SignupView = (props) => {
@@ -39,7 +39,7 @@ const SignupView = (props) => {
           create an account
         </h2>
       </header>
-      <Form onSubmit={(e) => onSubmit(e)}>
+      <CustomForm onSubmit={(e) => onSubmit(e)}>
         <Inputfield
           className=""
           name="name"
@@ -70,7 +70,7 @@ const SignupView = (props) => {
           placeholder="provide a password"
           required
         />
-      </Form>
+      </CustomForm>
     </section>
   );
 };
