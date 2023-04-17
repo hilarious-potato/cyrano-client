@@ -1,9 +1,7 @@
 const Header = () => {
   return (
-    <header>
-      <h1 className="body-font text-primary font-heading text-4xl">
-        The Cyrano Project
-      </h1>
+    <header className="px-16 py-4">
+      <h1 className="font-body text-4xl italic text-primary">cyrano</h1>
     </header>
   );
 };
