@@ -1,9 +1,7 @@
 import { useState } from "react";
 import postMessage from "../utils/postMessage";
 import Textarea from "../components/Textarea";
-import Button from "../components/Button";
-// import Inputfield from "../components/Inputfield";
-// import Textarea from "../components/Textarea";
+import Form from "../components/Form";
 
 const Home = () => {
   const [encryptedContent, setMessage] = useState("");
@@ -28,7 +26,7 @@ const Home = () => {
           Create a Message
         </h2>
       </header>
-      <form onSubmit={(e) => onSubmit(e)}>
+      <Form onSubmit={(e) => onSubmit(e)}>
         <Textarea
           className="my-4"
           label="Message"
@@ -41,15 +39,7 @@ const Home = () => {
           type="text"
           required
         />
-        <div className="button-container absolute right-0">
-          <Button className="mr-2" type="reset" secondary>
-            reset
-          </Button>
-          <Button type="submit" primary>
-            submit
-          </Button>
-        </div>
-      </form>
+      </Form>
     </section>
   );
 };

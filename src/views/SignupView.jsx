@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Inputfield from "../components/Inputfield";
-import Outputfield from "../components/Outputfield";
-import Button from "../components/Button";
+import Form from "../components/Form";
 import axios from "axios";
 
 const SignupView = (props) => {
@@ -40,9 +39,9 @@ const SignupView = (props) => {
           create an account
         </h2>
       </header>
-      <form onSubmit={(e) => onSubmit(e)}>
+      <Form onSubmit={(e) => onSubmit(e)}>
         <Inputfield
-          className="my-4"
+          className=""
           name="name"
           value={user.name}
           onChange={(e) => onChange(e)}
@@ -52,7 +51,7 @@ const SignupView = (props) => {
           required
         />
         <Inputfield
-          className="my-4"
+          className=""
           name="email"
           value={user.email}
           onChange={(e) => onChange(e)}
@@ -62,7 +61,7 @@ const SignupView = (props) => {
           required
         />
         <Inputfield
-          className="my-4"
+          className=""
           name="password"
           value={user.password}
           onChange={(e) => onChange(e)}
@@ -71,15 +70,7 @@ const SignupView = (props) => {
           placeholder="provide a password"
           required
         />
-        <div className="button-container absolute right-0">
-          <Button className="mr-2" type="reset" secondary>
-            reset
-          </Button>
-          <Button type="submit" primary>
-            submit
-          </Button>
-        </div>
-      </form>
+      </Form>
     </section>
   );
 };

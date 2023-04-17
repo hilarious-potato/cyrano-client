@@ -18,7 +18,9 @@ const Outputfield = (props) => {
 
   return (
     <div
-      className={"relative grid grid-cols-7 gap-4 font-body " + props.className}
+      className={
+        "relative my-4 grid grid-cols-7 gap-4 font-body " + props.className
+      }
     >
       <label className="col-span-2 flex flex-col justify-center text-right text-gray-400">
         {props.label}

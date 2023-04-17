@@ -2,7 +2,8 @@ const Textarea = (props) => {
   return (
     <div
       className={
-        "relative grid grid-cols-7 gap-x-4 gap-y-2 font-body " + props.className
+        "relative my-4 grid grid-cols-7 gap-x-4 gap-y-2 font-body " +
+        props.className
       }
     >
       <label
