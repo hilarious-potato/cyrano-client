@@ -16,7 +16,7 @@ export default {
         },
       },
       fontFamily: {
-        heading: "'Oswald', sans-serif",
+        heading: ["CamingoCode", ...defaultTheme.fontFamily.mono],
         mono: ["CamingoCode", ...defaultTheme.fontFamily.mono],
         body: ["CamingoCode", ...defaultTheme.fontFamily.mono],
       },
