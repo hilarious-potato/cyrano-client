@@ -14,7 +14,7 @@ const Textarea = (props) => {
       </label>
       {props.required && props.value.length <= 0 && <RequiredTag />}
       <textarea
-        className="col-span-7 h-96 rounded-md border border-gray-600 bg-gray-800 px-3 py-1 text-gray-200 focus:ring-primary"
+        className="col-span-7 h-96 resize-none rounded-md border border-gray-300 bg-gray-800/25 px-3 py-1 text-gray-200 backdrop-blur-sm focus:ring-primary"
         name={props.name && props.name}
         value={props.value && props.value}
         placeholder={props.placeholder}

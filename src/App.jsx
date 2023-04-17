@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
 import Message from "./views/Message";
 import Header from "./components/Header";
-import SignupView from "./views/SignupView";
+import SignupView from "./components/SignupDialog";
 
 function App() {
   return (

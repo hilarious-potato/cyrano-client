@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
 
 const Button = (props) => {
-  const baseClassName =
-    "rounded-md border px-3 py-1 font-body " +
-    (props.className && props.className);
+  const baseClassName = `rounded-md border px-3 py-1 font-body ${
+    props.className && props.className
+  }`;
   const primaryClassNames = "border-primary text-primary";
   const secondaryClassNames = "border-secondary text-secondary";
   const warningClassNames = "border-warning text-warning";
-  const baseColor = "border-gray-600";
+  const baseColor = "border-gray-600 text-gray-200";
 
   const [buttonClassName, setButtonClassName] = useState("");
 
   const concatClassName = () => {
-    let str = baseClassName;
+    let str;
 
     if (props.primary) {
-      str += " " + primaryClassNames;
+      str = `${baseClassName} ${primaryClassNames}`;
     } else if (props.secondary) {
-      str += " " + secondaryClassNames;
+      str = `${baseClassName} ${secondaryClassNames}`;
     } else if (props.warning) {
-      str += " " + warningClassNames;
+      str = `${baseClassName} ${warningClassNames}`;
     } else {
-      str += " " + baseColor;
+      str = `${baseClassName} ${baseColor}`;
     }
 
     return str;

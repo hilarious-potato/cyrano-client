@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Inputfield from "../components/Inputfield";
-import Form from "../components/Form";
+import Dialog from "./Dialog";
+import Inputfield from "./Inputfield";
+import Form from "./Form";
 import axios from "axios";
 
-const SignupView = (props) => {
+const LoginDialog = (props) => {
   const [user, setUser] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -25,7 +25,7 @@ const SignupView = (props) => {
       import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 
     axios
-      .post(baseURL + "/auth/signup", user)
+      .post(baseURL + "/auth/login", user)
       .then((result) => {
         console.log("result: ", result);
       })
@@ -33,23 +33,13 @@ const SignupView = (props) => {
   };
 
   return (
-    <section className="Signup relative">
-      <header>
-        <h2 className="font-heading font-bold text-secondary">
-          create an account
-        </h2>
-      </header>
+    <Dialog
+      id={props.id}
+      open={props.open}
+      toggle={props.toggle}
+      title="log into your account"
+    >
       <Form onSubmit={(e) => onSubmit(e)}>
-        <Inputfield
-          className=""
-          name="name"
-          value={user.name}
-          onChange={(e) => onChange(e)}
-          label="user name"
-          type="text"
-          placeholder="choose a user name"
-          required
-        />
         <Inputfield
           className=""
           name="email"
@@ -71,8 +61,8 @@ const SignupView = (props) => {
           required
         />
       </Form>
-    </section>
+    </Dialog>
   );
 };
 
-export default SignupView;
+export default LoginDialog;

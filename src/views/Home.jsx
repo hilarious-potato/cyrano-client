@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <section className="Home relative">
       <header>
-        <h2 className="font-heading font-bold text-secondary">
+        <h2 className="font-heading text-xl font-bold text-secondary">
           Create a Message
         </h2>
       </header>
