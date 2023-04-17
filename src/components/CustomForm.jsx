@@ -1,8 +1,12 @@
 import Button from "./Button";
 
-const Form = (props) => {
+const CustomForm = (props) => {
   return (
-    <form onSubmit={(e) => props.onSubmit(e)}>
+    <form
+      onSubmit={(e) => {
+        props.onSubmit(e);
+      }}
+    >
       {props.children}
       <div className="button-container container flex justify-end">
         <Button className="mr-2" type="reset" secondary>
@@ -16,4 +20,4 @@ const Form = (props) => {
   );
 };
 
-export default Form;
+export default CustomForm;

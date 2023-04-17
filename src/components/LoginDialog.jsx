@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import Dialog from "./Dialog";
 import Inputfield from "./Inputfield";
-import Form from "./Form";
+import CustomForm from "./Form";
 // import axios from "axios";
 import authService from "../services/auth.service";
 import { AuthContext } from "../context/auth.context";
@@ -53,7 +53,7 @@ const LoginDialog = (props) => {
       toggle={props.toggle}
       title="log into your account"
     >
-      <Form onSubmit={(e) => onSubmit(e)}>
+      <CustomForm onSubmit={(e) => onSubmit(e)}>
         <Inputfield
           className=""
           name="email"
@@ -74,7 +74,7 @@ const LoginDialog = (props) => {
           placeholder="provide a password"
           required
         />
-      </Form>
+      </CustomForm>
     </Dialog>
   );
 };
