@@ -8,12 +8,9 @@ const Button = (props) => {
   const secondaryClassNames = "border-secondary text-secondary";
   const warningClassNames = "border-warning text-warning";
   const baseColor = "border-gray-600 text-gray-200";
-
   const [buttonClassName, setButtonClassName] = useState("");
-
   const concatClassName = () => {
     let str;
-
     if (props.primary) {
       str = `${baseClassName} ${primaryClassNames}`;
     } else if (props.secondary) {
@@ -23,7 +20,6 @@ const Button = (props) => {
     } else {
       str = `${baseClassName} ${baseColor}`;
     }
-
     return str;
   };
 
