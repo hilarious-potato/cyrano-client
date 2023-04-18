@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import Dialog from "./Dialog";
 import Inputfield from "./Inputfield";
-import CustomForm from "./Form";
+import CustomForm from "./CustomForm";
 // import axios from "axios";
 import authService from "../services/auth.service";
 import { AuthContext } from "../context/auth.context";

@@ -1,7 +1,7 @@
-import { Routes, Route } from "react-router-dom";
-import Message from "./Views/ReadMessage";
+import { Route, Routes } from "react-router-dom";
+import ReadMessage from "./Views/ReadMessage";
 import Header from "./components/Header";
-import Home from "./Views/Home";
+import Home from "./views/Home";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <main className="px-16">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/messages/:messageId" element={<Message />} />
+          <Route path="/messages/:messageId" element={<ReadMessage />} />
         </Routes>
       </main>
     </div>
