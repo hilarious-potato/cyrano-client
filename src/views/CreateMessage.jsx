@@ -3,14 +3,17 @@ import postMessage from "../utils/postMessage";
 import generatePassword from "../utils/generatePassword";
 import MessageForm from "../components/MessageForm";
 import OutputField from "../components/Outputfield";
+import Button from "../components/Button";
 
 function CreateMessage() {
   const [message, setMessage] = useState("");
   const [password, setPassword] = useState("");
   const [postedMessage, setPostedMessage] = useState(null);
+
   useEffect(() => {
     setPassword(generatePassword());
   }, []);
+
   const submitMessage = (event) => {
     event.preventDefault();
     const submitMessage = async () => {
@@ -28,7 +31,7 @@ function CreateMessage() {
     <>
       <section className="CreateMessage relative">
         <header>
-          <h2 className="font-heading text-xl font-bold text-secondary">
+          <h2 className="my-4 font-heading text-xl font-bold text-secondary">
             Create a Message
           </h2>
         </header>
@@ -43,8 +46,15 @@ function CreateMessage() {
         )}
         {postedMessage && (
           <>
-            <h2>Success</h2>
-            <p>Your message was encrypted and created</p>
+            <div className="my-6 rounded-lg border border-gray-400 p-4">
+              <h3 className="mb-2 text-lg italic">
+                🎉 success, your message was encrypted and created
+              </h3>
+              <p>
+                now you can copy the links and share your message with the
+                world!
+              </p>
+            </div>
             <OutputField
               type="link"
               label="Link to view message"
@@ -66,6 +76,18 @@ function CreateMessage() {
                 postedMessage.editId
               }`}
             />
+            <div className="grid justify-end">
+              <Button
+                onClick={() => {
+                  setMessage("");
+                  setPostedMessage(null);
+                  setPassword(generatePassword());
+                }}
+                primary
+              >
+                new message
+              </Button>
+            </div>
           </>
         )}
       </section>

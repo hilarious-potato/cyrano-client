@@ -1,3 +1,5 @@
+import CopyButton from "./CopyButton";
+
 const Outputfield = (props) => {
   const onClick = (event) => {
     // Copy the text inside the text field
@@ -37,19 +39,6 @@ const Outputfield = (props) => {
       </div>
 
       <CopyButton onClick={copyContent} type={props.type} />
-    </div>
-  );
-};
-
-const CopyButton = (props) => {
-  return (
-    <div className="absolute bottom-0 right-0 top-0 flex flex-col justify-center rounded-e-md border-b border-e border-t border-gray-600 bg-gray-800/25  px-2 backdrop-blur-sm">
-      <button
-        onClick={() => props.onClick()}
-        className="m-auto block text-sm text-primary"
-      >
-        copy {props.type}
-      </button>
     </div>
   );
 };

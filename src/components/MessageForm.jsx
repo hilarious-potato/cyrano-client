@@ -6,7 +6,7 @@ function MessageForm(props) {
     <CustomForm onSubmit={props.submitMessage}>
       <Textarea
         className="my-4"
-        label="Message"
+        label="message"
         name="encryptedContent"
         placeholder="say something …"
         value={props.message}
@@ -17,8 +17,9 @@ function MessageForm(props) {
         required
       />{" "}
       <Inputfield
+        allowCopy={true}
         className="my-4"
-        label="Password"
+        label="password"
         name="password"
         placeholder={props.password}
         value={props.password}

@@ -1,3 +1,5 @@
+import CopyButton from "./CopyButton";
+
 const Inputfield = (props) => {
   return (
     <div
@@ -20,6 +22,7 @@ const Inputfield = (props) => {
         }}
       />
       {props.required && props.value.length <= 0 && <RequiredTag />}
+      {props.allowCopy && props.value.length > 0 && <CopyButton />}
     </div>
   );
 };
