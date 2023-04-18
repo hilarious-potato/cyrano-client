@@ -1,18 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./views/Home";
-import Message from "./views/Message";
+import { Route, Routes } from "react-router-dom";
+import ReadMessage from "./Views/ReadMessage";
 import Header from "./components/Header";
-import SignupView from "./views/SignupView";
+import Home from "./views/Home";
 
 function App() {
   return (
     <div className="App h-screen w-screen bg-gray-800 text-gray-200">
       <Header />
-      <main className="px-16 py-8">
+      <main className="px-16">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignupView />} />
-          <Route path="/messages/:messageId" element={<Message />} />
+          <Route path="/messages/:messageId" element={<ReadMessage />} />
         </Routes>
       </main>
     </div>

@@ -11,9 +11,8 @@ const Inputfield = (props) => {
       >
         {props.label}
       </label>
-
       <input
-        className="col-span-5 rounded-md border border-gray-600 bg-gray-800 px-3 py-1 text-gray-200 focus:ring-primary"
+        className="col-span-5 rounded-md border border-gray-300 bg-gray-800/25 px-3 py-1 text-gray-200 backdrop-blur-sm focus:ring-primary"
         type={props.type && props.type}
         name={props.name && props.name}
         value={props.value && props.value}
