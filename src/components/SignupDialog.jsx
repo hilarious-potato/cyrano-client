@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Dialog from "./Dialog";
 import Inputfield from "./Inputfield";
 import Form from "./Form";
-import axios from "axios";
+// import axios from "axios";
+import authService from "../services/auth.service";
+import { AuthContext } from "../context/auth.context";
 
 const SignupDialog = (props) => {
+  const { storeToken, authenticateUser } = useContext(AuthContext);
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -22,13 +25,29 @@ const SignupDialog = (props) => {
 
     console.log(user);
 
-    const baseURL =
-      import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
+    // const baseURL =
+    //   import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 
-    axios
-      .post(baseURL + "/auth/signup", user)
-      .then((result) => {
-        console.log("result: ", result);
+    // axios
+    //   .post(baseURL + "/auth/signup", user)
+    //   .then((result) => {
+    //     console.log("result: ", result);
+    //   })
+    //   .catch((err) => console.error(err));
+
+    authService
+      .signup(user)
+      .then((response) => {
+        console.log(response.data);
+        return authService.login({
+          email: user.email,
+          password: user.password,
+        });
+      })
+      .then((response) => {
+        storeToken(response.data.authToken);
+        authenticateUser();
+        props.toggle();
       })
       .catch((err) => console.error(err));
   };
