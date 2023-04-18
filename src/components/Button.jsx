@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const Button = (props) => {
-  const baseClassName = `rounded-md border px-3 py-1 font-body ${
+  const baseClassName = `rounded-md border px-3 py-1 font-body bg-gray-800/25 backdrop-blur-sm ${
     props.className && props.className
   }`;
   const primaryClassNames = "border-primary text-primary";

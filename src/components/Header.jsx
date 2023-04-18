@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex items-baseline justify-between px-16 py-4">
+    <header className="sticky top-0 z-10 flex items-baseline justify-between bg-gray-800/25 px-16 py-4 backdrop-blur-sm">
       <Link to="/">
         <h1 className="font-body text-4xl italic text-primary">cyrano</h1>
       </Link>

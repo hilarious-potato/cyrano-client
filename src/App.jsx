@@ -4,7 +4,7 @@ import Home from "./views/Home";
 import ReadMessage from "./views/ReadMessage";
 function App() {
   return (
-    <div className="App h-screen w-screen bg-gray-800 text-gray-200">
+    <div className="App relative h-screen w-screen overflow-auto bg-gray-800 pb-16 font-body text-gray-200">
       <Header />
       <main className="px-16">
         <Routes>

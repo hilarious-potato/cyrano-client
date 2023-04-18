@@ -26,21 +26,27 @@ const Outputfield = (props) => {
         {props.label}
       </label>
 
-      <div className="col-span-5 rounded-md border border-gray-600 bg-gray-800 px-3 py-1 text-gray-200 focus:ring-primary">
-        {props.value}
+      <div className="col-span-5 overflow-hidden rounded-md border border-gray-600 bg-gray-800 px-3 py-1 text-gray-200 focus:ring-primary">
+        {props.type === "link" ? (
+          <a className="text-secondary underline" href={props.value}>
+            {props.value}
+          </a>
+        ) : (
+          props.value
+        )}
       </div>
 
-      <RequiredTag onClick={copyContent} type={props.type} />
+      <CopyButton onClick={copyContent} type={props.type} />
     </div>
   );
 };
 
-const RequiredTag = (props) => {
+const CopyButton = (props) => {
   return (
-    <div className="absolute right-4 top-2">
+    <div className="absolute bottom-0 right-0 top-0 flex flex-col justify-center rounded-e-md border-b border-e border-t border-gray-600 bg-gray-800/25  px-2 backdrop-blur-sm">
       <button
         onClick={() => props.onClick()}
-        className="block text-sm text-secondary"
+        className="m-auto block text-sm text-primary"
       >
         copy {props.type}
       </button>
