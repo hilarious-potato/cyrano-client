@@ -34,7 +34,8 @@ const ReadMessage = () => {
   const renderMessage = (message) => {
     const typed = new Typed(typedOutput.current, {
       strings: [message],
-      typeSpeed: 10,
+      typeSpeed: 30,
+      contentType: null,
       startDelay: 500,
     });
 
@@ -60,8 +61,7 @@ const ReadMessage = () => {
   };
 
   return (
-    <section className="ReadMessage relative">
-      <Header title="cyrano has sent you a message" />
+    <>
       <PWDialog
         open={showDialog}
         toggle={toggleDialog}
@@ -70,12 +70,15 @@ const ReadMessage = () => {
         password={password}
         onChange={setPassword}
       />
-      <article className="relative overflow-auto">
-        {!message && <Spinner />}
-        <span ref={typedOutput} />
-        {!message && <span className="typed-cursor" />}
-      </article>
-    </section>
+      <section className="ReadMessage xxl:w-1/3 relative lg:w-2/3">
+        <Header title="cyrano has sent you a message" />
+        <article className="relative overflow-auto">
+          {!message && <Spinner />}
+          <span ref={typedOutput} />
+          {!message && <span className="typed-cursor" />}
+        </article>
+      </section>
+    </>
   );
 };
 

@@ -30,7 +30,7 @@ function CreateMessage() {
 
   return (
     <>
-      <section className="CreateMessage relative">
+      <section className="CreateMessage xxl:w-1/3 relative lg:w-2/3">
         <Header title="Create a Message" />
         {!postedMessage && (
           <MessageForm
