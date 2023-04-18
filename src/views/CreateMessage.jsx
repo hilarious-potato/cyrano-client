@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import postMessage from "../utils/postMessage";
 import generatePassword from "../utils/generatePassword";
 import MessageForm from "../components/MessageForm";
-import OutputField from "../components/Outputfield";
+import Outputfield from "../components/Outputfield";
+import Header from "../components/Header";
 import Button from "../components/Button";
 
 function CreateMessage() {
@@ -30,11 +31,7 @@ function CreateMessage() {
   return (
     <>
       <section className="CreateMessage relative">
-        <header>
-          <h2 className="my-4 font-heading text-xl font-bold text-secondary">
-            Create a Message
-          </h2>
-        </header>
+        <Header title="Create a Message" />
         {!postedMessage && (
           <MessageForm
             password={password}
@@ -55,21 +52,21 @@ function CreateMessage() {
                 world!
               </p>
             </div>
-            <OutputField
+            <Outputfield
               type="link"
               label="Link to view message"
               value={`${import.meta.env.VITE_CLIENT_SERVER_URL}/messages/${
                 postedMessage.messageId
               }`}
             />
-            <OutputField
+            <Outputfield
               type="link"
               label="Share Link with Password"
               value={`${import.meta.env.VITE_CLIENT_SERVER_URL}/messages/${
                 postedMessage.messageId
               }#${postedMessage.messagePassword}`}
             />
-            <OutputField
+            <Outputfield
               type="link"
               label="Edit Link"
               value={`${import.meta.env.VITE_CLIENT_SERVER_URL}/messages/edit/${

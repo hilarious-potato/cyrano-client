@@ -1,4 +1,5 @@
 import Button from "./Button";
+import Header from "./Header";
 
 const Dialog = (props) => {
   return (
@@ -14,10 +15,7 @@ const Dialog = (props) => {
         id={props.id}
         open={props.open ? "open" : false}
       >
-        <header className="mb-6 flex items-baseline justify-between">
-          <h2 className="font-heading text-xl font-bold text-secondary ">
-            {props.title}
-          </h2>
+        <Header title={props.title}>
           <Button
             onClick={() => {
               props.toggle();
@@ -25,7 +23,7 @@ const Dialog = (props) => {
           >
             close
           </Button>
-        </header>
+        </Header>
         {props.children}
       </dialog>
     </>

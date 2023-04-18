@@ -28,14 +28,6 @@ const LoginDialog = (props) => {
     const baseURL =
       import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 
-    // axios
-    //   .post(baseURL + "/auth/login", user)
-    //   .then((result) => {
-    //     console.log("result: ", result);
-    //   })
-
-    //   .catch((err) => console.error(err));
-
     authService
       .login(user)
       .then((response) => {

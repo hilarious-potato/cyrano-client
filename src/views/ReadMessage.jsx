@@ -1,11 +1,13 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
+import Header from "../components/Header";
 import CustomForm from "../components/CustomForm";
 import Inputfield from "../components/Inputfield";
 import fetchMessage from "../utils/fetchMessage";
 import Dialog from "../components/Dialog";
+import Typed from "typed.js";
 
 const ReadMessage = () => {
   console.log("WE Are in the read message comp");
@@ -14,6 +16,7 @@ const ReadMessage = () => {
   const [message, setMessage] = useState(null);
   const [password, setPassword] = useState("");
   const [showDialog, setShowDialog] = useState(true);
+  const typedOutput = useRef(null);
 
   useEffect(() => {
     const fragment = window.location.hash;
@@ -28,8 +31,17 @@ const ReadMessage = () => {
   };
   // console.log("Password:", password);
 
-  const renderMessage = () => {
-    return <article className="relative overflow-auto">{message}</article>;
+  const renderMessage = (message) => {
+    const typed = new Typed(typedOutput.current, {
+      strings: [message],
+      typeSpeed: 10,
+      startDelay: 500,
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
   };
 
   const getMessage = async (e) => {
@@ -41,6 +53,7 @@ const ReadMessage = () => {
       // console.log(messageFromDb);
       setMessage(messageFromDb);
       toggleDialog();
+      renderMessage(messageFromDb);
     } catch (error) {
       console.error(error);
     }
@@ -48,11 +61,7 @@ const ReadMessage = () => {
 
   return (
     <section className="ReadMessage relative">
-      <header>
-        <h2 className="font-heading text-xl font-bold text-secondary">
-          cyrano has sent you a message
-        </h2>
-      </header>
+      <Header title="cyrano has sent you a message" />
       <PWDialog
         open={showDialog}
         toggle={toggleDialog}
@@ -61,8 +70,11 @@ const ReadMessage = () => {
         password={password}
         onChange={setPassword}
       />
-
-      {message ? renderMessage() : <Spinner />}
+      <article className="relative overflow-auto">
+        {!message && <Spinner />}
+        <span ref={typedOutput} />
+        {!message && <span className="typed-cursor" />}
+      </article>
     </section>
   );
 };
