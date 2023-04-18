@@ -43,7 +43,7 @@ function CreateMessage() {
         )}
         {postedMessage && (
           <>
-            <div className="my-6 rounded-lg border border-gray-400 p-4">
+            <div className="my-6 rounded-lg border border-secondary p-4">
               <h3 className="mb-2 text-lg italic">
                 🎉 success, your message was encrypted and created
               </h3>
