@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import postMessage from "../utils/postMessage";
 import generatePassword from "../utils/generatePassword";
-import MessageForm from "../components/messageForm";
-import OutputField from "../components/OutputField";
+import MessageForm from "../components/MessageForm";
+import OutputField from "../components/Outputfield";
 
 function CreateMessage() {
   const [message, setMessage] = useState("");

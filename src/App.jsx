@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import ReadMessage from "./Views/ReadMessage";
 import Header from "./components/Header";
 import Home from "./views/Home";
-
+import ReadMessage from "./views/ReadMessage";
 function App() {
   return (
     <div className="App h-screen w-screen bg-gray-800 text-gray-200">
