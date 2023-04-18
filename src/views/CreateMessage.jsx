@@ -5,6 +5,7 @@ import MessageForm from "../components/MessageForm";
 import OutputField from "../components/Outputfield";
 
 function CreateMessage() {
+  const ourURL = import.meta.env.VITE_CLIENT_SERVER_URL || import.meta.env.URL;
   const [message, setMessage] = useState("");
   const [password, setPassword] = useState("");
   const [postedMessage, setPostedMessage] = useState(null);
@@ -71,9 +72,7 @@ function CreateMessage() {
             />
             <OutputField
               label="Share Link with Password"
-              value={`${import.meta.env.VITE_CLIENT_SERVER_URL}/messages/${
-                postedMessage.messageId
-              }#${postedMessage.messagePassword}`}
+              value={`${ourURL}/messages/${postedMessage.messageId}#${postedMessage.messagePassword}`}
             />
             <OutputField
               label="Edit Link"
