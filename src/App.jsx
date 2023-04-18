@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import ReadMessage from "./Views/ReadMessage";
+import ReadMessage from "./Views/readMessage";
 import Header from "./components/Header";
 import Home from "./views/Home";
 
