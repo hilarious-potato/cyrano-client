@@ -4,10 +4,12 @@ import MainHeader from "./components/MainHeader";
 import Home from "./views/Home";
 import ReadMessage from "./views/ReadMessage";
 import EditMessage from "./views/EditMessage";
-
 import SignupDialog from "./components/SignupDialog";
 import LoginDialog from "./components/LoginDialog";
-
+import { useContext } from "react";
+import { AuthContext } from "./context/auth.context";
+import Tresors from "./views/Tresors";
+import Tresor from "./views/Tresor";
 function App() {
   const [signupIsOpen, setSignupIsOpen] = useState(false);
   const [loginIsOpen, setLoginIsOpen] = useState(false);
@@ -25,8 +27,10 @@ function App() {
       <main className="flex w-full justify-center overflow-auto px-4 md:px-8 xl:px-16">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/messages/:messageId" element={<ReadMessage />} />
           <Route path="/messages/edit/:editId" element={<EditMessage />} />
+          <Route path="/messages/:messageId" element={<ReadMessage />} />
+          <Route path="/tresors" element={<Tresors />} />
+          <Route path="/tresors/:tresorId" element={<Tresor />} />
         </Routes>
       </main>
       <SignupDialog id="signup" open={signupIsOpen} toggle={toggleSignup} />
