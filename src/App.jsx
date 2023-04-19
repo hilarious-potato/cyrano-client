@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <div className="App relative h-screen w-screen bg-gray-800 pb-16 font-body text-gray-200">
+    <div className="App fixed h-screen w-screen overflow-auto bg-gray-800 pb-16 font-body text-gray-200">
       <MainHeader toggleSignup={toggleSignup} toggleLogin={toggleLogin} />
       <main className="flex w-full justify-center overflow-auto px-4 md:px-8 xl:px-16">
         <Routes>

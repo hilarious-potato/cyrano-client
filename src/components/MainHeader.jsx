@@ -15,7 +15,7 @@ const Header = (props) => {
   return (
     <header className="sticky top-0 z-10 flex items-baseline justify-between bg-gray-800/25 px-4 py-4 backdrop-blur-sm md:px-8 xl:px-16">
       <Link to="/">
-        <h1 className="font-body text-4xl italic text-primary">cyra.no</h1>
+        <h1 className="font-body text-4xl italic text-primary">cyrano</h1>
       </Link>
 
       <div>

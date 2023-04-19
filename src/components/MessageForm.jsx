@@ -21,7 +21,7 @@ function MessageForm(props) {
         required
       />{" "}
       <Inputfield
-        allowCopy={true}
+        // allowCopy={true}
         className="my-4"
         label="password"
         name="password"

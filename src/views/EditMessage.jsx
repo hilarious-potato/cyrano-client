@@ -8,6 +8,10 @@ import PWDialog from "../components/PWDialog";
 import Header from "../components/Header";
 import Spinner from "../components/Spinner";
 import MessageForm from "../components/MessageForm";
+import LinkOutlet from "../components/LinkOutlet";
+
+import Outputfield from "../components/Outputfield";
+import Button from "../components/Button";
 
 export default function EditMessage(props) {
   const { editId } = useParams();
@@ -51,11 +55,18 @@ export default function EditMessage(props) {
         const newMessage = await updateMessage(message, editId, password);
         console.log("new message: ", newMessage);
         setPostedMessage(newMessage);
+        console.log("newMessage: ", newMessage);
       } catch (error) {
         console.error(error);
       }
     };
     push();
+  };
+
+  const resetMessage = () => {
+    setMessage("");
+    setPostedMessage(null);
+    setPassword(generatePassword());
   };
 
   return (
@@ -65,7 +76,7 @@ export default function EditMessage(props) {
         <article className="relative overflow-auto">
           {!message && <Spinner />}
 
-          {message && (
+          {message && !postedMessage && (
             <MessageForm
               password={password}
               setPassword={setPassword}
@@ -76,7 +87,14 @@ export default function EditMessage(props) {
             />
           )}
         </article>
-        {!postedMessage && postedMessage}
+        {postedMessage && (
+          <LinkOutlet
+            newMessage={resetMessage}
+            postedMessage={postMessage}
+            title="🎉 success, the message was encrypted and updated"
+            subTitle="now you can copy the links and share your message with the world!"
+          />
+        )}
       </section>
       <PWDialog
         open={showDialog}
