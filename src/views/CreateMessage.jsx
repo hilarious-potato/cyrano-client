@@ -39,6 +39,7 @@ function CreateMessage() {
             message={message}
             setMessage={setMessage}
             submitMessage={submitMessage}
+            onReset={setMessage}
           />
         )}
         {postedMessage && (

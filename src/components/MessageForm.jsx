@@ -3,7 +3,10 @@ import Inputfield from "./Inputfield";
 import CustomForm from "./CustomForm";
 function MessageForm(props) {
   return (
-    <CustomForm onSubmit={props.submitMessage}>
+    <CustomForm
+      onReset={() => props.onReset("")}
+      onSubmit={props.submitMessage}
+    >
       <Textarea
         className="my-4"
         label="message"

@@ -69,6 +69,7 @@ const ReadMessage = () => {
         onSubmit={getMessage}
         password={password}
         onChange={setPassword}
+        onReset={setPassword}
       />
       <section className="ReadMessage xxl:w-1/3 relative lg:w-2/3">
         <Header title="cyrano has sent you a message" />
@@ -90,7 +91,10 @@ const PWDialog = (props) => {
       toggle={props.toggle}
       title={props.title}
     >
-      <CustomForm onSubmit={(e) => props.onSubmit(e)}>
+      <CustomForm
+        onReset={() => props.onReset("")}
+        onSubmit={(e) => props.onSubmit(e)}
+      >
         <Inputfield
           className="my-4"
           label="password"

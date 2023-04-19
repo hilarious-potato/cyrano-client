@@ -1,22 +1,12 @@
 import { useContext, useState } from "react";
 import Button from "./Button";
-import SignupDialog from "./SignupDialog";
-import LoginDialog from "./LoginDialog";
+
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../context/auth.context";
 
-const Header = () => {
+const Header = (props) => {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
-  const [signupIsOpen, setSignupIsOpen] = useState(false);
-  const [loginIsOpen, setLoginIsOpen] = useState(false);
-
-  const toggleSignup = () => {
-    setSignupIsOpen((prevState) => !prevState);
-  };
-  const toggleLogin = () => {
-    setLoginIsOpen((prevState) => !prevState);
-  };
 
   const handleLogout = () => {
     logOutUser();
@@ -25,7 +15,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-10 flex items-baseline justify-between bg-gray-800/25 px-4 py-4 backdrop-blur-sm md:px-8 xl:px-16">
       <Link to="/">
-        <h1 className="font-body text-4xl italic text-primary">cyrano</h1>
+        <h1 className="font-body text-4xl italic text-primary">cyra.no</h1>
       </Link>
 
       <div>
@@ -34,14 +24,14 @@ const Header = () => {
             <Button
               className="mr-2"
               onClick={() => {
-                toggleSignup();
+                props.toggleSignup();
               }}
             >
               register
             </Button>
             <Button
               onClick={() => {
-                toggleLogin();
+                props.toggleLogin();
               }}
             >
               login
@@ -58,8 +48,6 @@ const Header = () => {
           </Button>
         )}
       </div>
-      <SignupDialog id="signup" open={signupIsOpen} toggle={toggleSignup} />
-      <LoginDialog id="login" open={loginIsOpen} toggle={toggleLogin} />
     </header>
   );
 };

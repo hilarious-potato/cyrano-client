@@ -6,6 +6,7 @@ const CustomForm = (props) => {
       onSubmit={(e) => {
         props.onSubmit(e);
       }}
+      onReset={() => props.onReset()}
     >
       {props.children}
       <div className="button-container container flex justify-end">
