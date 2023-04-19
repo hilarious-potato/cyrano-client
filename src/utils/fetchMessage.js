@@ -1,12 +1,14 @@
 import axios from "axios";
 import decryptMessage from "./decryptMessage";
 
-async function fetchMessage(id, password) {
+async function fetchMessage(id, password, isEditable = false) {
+  const fetchURL = isEditable ? "/api/messages/edit/" : "/api/messages/";
   try {
     console.log("We are now in fetchMessage Method");
     const messageFromDb = await axios.get(
-      import.meta.env.VITE_APP_SERVER_URL + "/api/messages/" + id
+      import.meta.env.VITE_APP_SERVER_URL + fetchURL + id
     );
+
     if (messageFromDb) {
       console.log(messageFromDb);
       const decryptedMessage = await decryptMessage(
