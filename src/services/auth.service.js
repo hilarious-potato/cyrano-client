@@ -1,4 +1,5 @@
 import axios from "axios";
+import hashPassword from "../utils/hashPassword";
 
 class AuthService {
   constructor() {
@@ -19,16 +20,40 @@ class AuthService {
     });
   }
 
-  login = (requestBody) => {
-    return this.api.post("/auth/login", requestBody);
+  login = async (userData) => {
+    try {
+      console.log("trying to login", userData);
+      const unhashedPassword = userData.password;
+      const { email } = userData;
+      console.log(email);
+      const additionalInfo = await this.api.post("/auth/login/salt", {
+        email,
+      });
+      const { salt } = additionalInfo;
+      const { password } = await hashPassword(unhashedPassword, salt);
+      const requestBody = { ...userData, password };
+      console.log("try to login...", requestBody);
+      return this.api.post("/auth/login", requestBody);
+    } catch (error) {
+      console.log("oops.........");
+      console.error(error);
+    }
+
     // same as
     // return axios.post("http://localhost:5005/auth/login");
   };
 
-  signup = (requestBody) => {
-    return this.api.post("/auth/signup", requestBody);
-    // same as
-    // return axios.post("http://localhost:5005/auth/singup");
+  signup = async (userData) => {
+    try {
+      const unhashedPassword = userData.password;
+      const { password, salt } = await hashPassword(unhashedPassword);
+      const requestBody = { ...userData, password, salt };
+      console.log("try to signup: ", requestBody);
+      return this.api.post("/auth/signup", requestBody);
+    } catch (error) {
+      console.log("oooops.......");
+      console.error(error);
+    }
   };
 
   verify = () => {
