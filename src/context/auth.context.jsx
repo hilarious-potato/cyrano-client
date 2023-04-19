@@ -11,6 +11,21 @@ function AuthProviderWrapper(props) {
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
   };
+  const storeUserPasswordHash = async (password) => {
+    const uintPassword = new TextEncoder().encode(password);
+    const hashedPassword = await window.crypto.subtle.digest(
+      "SHA-256",
+      uintPassword
+    );
+    const hashArray = Array.from(new Uint8Array(hashedPassword)); // convert buffer to byte array
+    const hashHex = hashArray
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join(""); // convert bytes to hex string
+    hashHex;
+    console.log(hashedPassword);
+    localStorage.setItem("hashedPassword", hashHex);
+    return;
+  };
 
   const authenticateUser = () => {
     // Get the stored token from the localStorage
@@ -33,6 +48,7 @@ function AuthProviderWrapper(props) {
         .then((response) => {
           // If the server verifies that JWT token is valid  ✅
           const user = response.data;
+          console.log("we are in auth context and user data is", user);
           // Update state variables
           setIsLoggedIn(true);
           setIsLoading(false);
@@ -55,6 +71,7 @@ function AuthProviderWrapper(props) {
 
   const removeToken = () => {
     localStorage.removeItem("authToken");
+    localStorage.removeItem("hashedPassword");
   };
 
   const logOutUser = () => {
@@ -76,6 +93,7 @@ function AuthProviderWrapper(props) {
         isLoading,
         user,
         storeToken,
+        storeUserPasswordHash,
         authenticateUser,
         logOutUser,
       }}
