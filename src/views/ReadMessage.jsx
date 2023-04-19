@@ -1,12 +1,10 @@
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
+import PWDialog from "../components/PWDialog";
 import Header from "../components/Header";
-import CustomForm from "../components/CustomForm";
-import Inputfield from "../components/Inputfield";
 import fetchMessage from "../utils/fetchMessage";
-import Dialog from "../components/Dialog";
+
 import Typed from "typed.js";
 
 const ReadMessage = () => {
@@ -62,6 +60,14 @@ const ReadMessage = () => {
 
   return (
     <>
+      <section className="ReadMessage xxl:w-1/3 relative lg:w-2/3">
+        <Header title="cyrano has sent you a message" />
+        <article className="relative overflow-auto">
+          {!message && <Spinner />}
+          <span ref={typedOutput} />
+          {!message && <span className="typed-cursor" />}
+        </article>
+      </section>
       <PWDialog
         open={showDialog}
         toggle={toggleDialog}
@@ -71,42 +77,7 @@ const ReadMessage = () => {
         onChange={setPassword}
         onReset={setPassword}
       />
-      <section className="ReadMessage xxl:w-1/3 relative lg:w-2/3">
-        <Header title="cyrano has sent you a message" />
-        <article className="relative overflow-auto">
-          {!message && <Spinner />}
-          <span ref={typedOutput} />
-          {!message && <span className="typed-cursor" />}
-        </article>
-      </section>
     </>
-  );
-};
-
-const PWDialog = (props) => {
-  return (
-    <Dialog
-      id="pw-dialog"
-      open={props.open}
-      toggle={props.toggle}
-      title={props.title}
-    >
-      <CustomForm
-        onReset={() => props.onReset("")}
-        onSubmit={(e) => props.onSubmit(e)}
-      >
-        <Inputfield
-          className="my-4"
-          label="password"
-          name="password"
-          placeholder="enter password"
-          value={props.password}
-          onChange={(e) => {
-            props.onChange(e.target.value);
-          }}
-        />
-      </CustomForm>
-    </Dialog>
   );
 };
 

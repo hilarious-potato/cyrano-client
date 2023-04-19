@@ -17,15 +17,16 @@ function CreateMessage() {
 
   const submitMessage = (event) => {
     event.preventDefault();
-    const submitMessage = async () => {
+    const submit = async () => {
       try {
         const newMessage = await postMessage(message, password);
         setPostedMessage(newMessage);
+        console.log("newMessage: ", newMessage);
       } catch (error) {
         console.error(error);
       }
     };
-    submitMessage();
+    submit();
   };
 
   return (
@@ -72,7 +73,7 @@ function CreateMessage() {
               label="Edit Link"
               value={`${import.meta.env.VITE_CLIENT_SERVER_URL}/messages/edit/${
                 postedMessage.editId
-              }`}
+              }#${postedMessage.messagePassword}`}
             />
             <div className="grid justify-end">
               <Button
