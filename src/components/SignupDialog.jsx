@@ -22,9 +22,6 @@ const SignupDialog = (props) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-
-    console.log(user);
-
     authService
       .signup(user)
       .then((response) => {
