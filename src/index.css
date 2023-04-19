@@ -30,3 +30,9 @@
       url("/fonts/CamingoCode/CamingoCode-BoldItalic.woff2") format("woff2");
   }
 }
+
+@layer components {
+  .typed-cursor {
+    @apply text-primary;
+  }
+}

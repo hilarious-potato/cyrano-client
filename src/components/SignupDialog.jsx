@@ -25,16 +25,6 @@ const SignupDialog = (props) => {
 
     console.log(user);
 
-    // const baseURL =
-    //   import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
-
-    // axios
-    //   .post(baseURL + "/auth/signup", user)
-    //   .then((result) => {
-    //     console.log("result: ", result);
-    //   })
-    //   .catch((err) => console.error(err));
-
     authService
       .signup(user)
       .then((response) => {

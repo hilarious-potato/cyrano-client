@@ -1,3 +1,5 @@
+import CopyButton from "./CopyButton";
+
 const Outputfield = (props) => {
   const onClick = (event) => {
     // Copy the text inside the text field
@@ -26,24 +28,17 @@ const Outputfield = (props) => {
         {props.label}
       </label>
 
-      <div className="col-span-5 rounded-md border border-gray-600 bg-gray-800 px-3 py-1 text-gray-200 focus:ring-primary">
-        {props.value}
+      <div className="col-span-5 overflow-hidden rounded-md border border-gray-600 bg-gray-800 px-3 py-1 text-gray-200 focus:ring-primary">
+        {props.type === "link" ? (
+          <a className="text-secondary underline" href={props.value}>
+            {props.value}
+          </a>
+        ) : (
+          props.value
+        )}
       </div>
 
-      <RequiredTag onClick={copyContent} type={props.type} />
-    </div>
-  );
-};
-
-const RequiredTag = (props) => {
-  return (
-    <div className="absolute right-4 top-2">
-      <button
-        onClick={() => props.onClick()}
-        className="block text-sm text-secondary"
-      >
-        copy {props.type}
-      </button>
+      <CopyButton onClick={copyContent} type={props.type} />
     </div>
   );
 };
