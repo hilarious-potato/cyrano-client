@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import MainHeader from "./components/MainHeader";
 import Home from "./views/Home";
 import ReadMessage from "./views/ReadMessage";
+import EditMessage from "./views/EditMessage";
 
 import SignupDialog from "./components/SignupDialog";
 import LoginDialog from "./components/LoginDialog";
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/messages/:messageId" element={<ReadMessage />} />
+          <Route path="/messages/edit/:editId" element={<EditMessage />} />
         </Routes>
       </main>
       <SignupDialog id="signup" open={signupIsOpen} toggle={toggleSignup} />
