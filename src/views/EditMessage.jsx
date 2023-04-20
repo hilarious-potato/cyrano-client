@@ -6,7 +6,7 @@ import updateMessage from "../utils/updateMessage";
 
 import PWDialog from "../components/PWDialog";
 import Header from "../components/Header";
-import Spinner from "../components/Spinner";
+import TypedSpinner from "../components/TypedSpinner";
 import MessageForm from "../components/MessageForm";
 import LinkOutlet from "../components/LinkOutlet";
 
@@ -74,7 +74,7 @@ export default function EditMessage(props) {
       <section className="EditMessage xxl:w-1/3 relative lg:w-2/3">
         <Header title="edit this a message" />
         <article className="relative overflow-auto">
-          {!message && <Spinner />}
+          {!message && <TypedSpinner />}
 
           {message && !postedMessage && (
             <MessageForm
