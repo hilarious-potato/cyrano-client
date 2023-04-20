@@ -11,6 +11,11 @@ function AddToTresor(props) {
   const [userTresorList, setUserTresorList] = useState(null);
   const [messageTitle, setMessageTitle] = useState("");
   useEffect(() => {
+    if (userTresorList) {
+      setUploadTresor(userTresorList[0]._id);
+    }
+  }, [userTresorList]);
+  useEffect(() => {
     console.log("now tryin to fetch tresor list");
     tresorService.fetchUserList().then((response) => {
       console.log("fetching Tresors in add tresor gave:", response);
@@ -20,6 +25,10 @@ function AddToTresor(props) {
   }, [messageObj]);
   const pushMessageToTresor = (e) => {
     e.preventDefault();
+    if (!uploadTresor) {
+      console.log("no tresor selected");
+      return;
+    }
     const data = { ...messageObj, title: messageTitle };
     console.log(data, "upload Tresor Id", uploadTresor);
     tresorService
@@ -50,17 +59,21 @@ function AddToTresor(props) {
             name="tresorSelect"
             id="tresorSelect"
             value={uploadTresor}
+            onLoad={(e) => {
+              setUploadTresor(e.target.value);
+            }}
             onChange={(e) => {
               setUploadTresor(e.target.value);
             }}
           >
-            {userTresorList.map((tresor) => {
-              return (
-                <option key={tresor._id} value={tresor._id}>
-                  {tresor.title}
-                </option>
-              );
-            })}
+            {userTresorList &&
+              userTresorList.map((tresor) => {
+                return (
+                  <option key={tresor._id} value={tresor._id}>
+                    {tresor.title}
+                  </option>
+                );
+              })}
           </select>
         </CustomForm>
       )}
