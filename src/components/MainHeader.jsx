@@ -48,14 +48,8 @@ const Header = (props) => {
           </Button>
         )}
 
-        <Button
-          className="mr-4"
-          onClick={() => {
-            props.toggleCreateMessage();
-          }}
-          primary
-        >
-          write a message
+        <Button className="mr-4" primary>
+          <Link to="/write">write a message</Link>
         </Button>
       </div>
     </header>

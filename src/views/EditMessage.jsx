@@ -74,7 +74,7 @@ export default function EditMessage(props) {
       <section className="EditMessage xxl:w-1/3 relative lg:w-2/3">
         <Header title="edit this a message" />
         <article className="relative overflow-auto">
-          {!message && <TypedSpinner />}
+          {!message && <TypedSpinner context="encrypt" />}
 
           {message && !postedMessage && (
             <MessageForm
