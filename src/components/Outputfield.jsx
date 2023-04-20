@@ -9,7 +9,8 @@ const Outputfield = (props) => {
     alert("Copied the text: " + props.value);
   };
 
-  const copyContent = async () => {
+  const copyContent = async (event) => {
+    event.preventDefault();
     try {
       await navigator.clipboard.writeText(props.value);
       console.log("Content copied to clipboard");
@@ -20,15 +21,13 @@ const Outputfield = (props) => {
 
   return (
     <div
-      className={
-        "relative my-4 grid grid-cols-7 gap-4 font-body " + props.className
-      }
+      className={`gap-y-0font-body relative my-4 grid grid-cols-8 gap-x-4 ${props.className}`}
     >
       <label className="col-span-2 flex flex-col justify-center text-right text-gray-400">
         {props.label}
       </label>
 
-      <div className="col-span-5 overflow-hidden rounded-md border border-gray-600 bg-gray-800 px-3 py-1 text-gray-200 focus:ring-primary">
+      <div className="relative col-span-6 overflow-hidden truncate rounded-md border border-gray-600 bg-gray-800 px-3 py-1 text-gray-200 ring-primary focus:ring-2">
         {props.type === "link" ? (
           <a className="text-secondary underline" href={props.value}>
             {props.value}
@@ -36,9 +35,14 @@ const Outputfield = (props) => {
         ) : (
           props.value
         )}
+        <CopyButton onClick={copyContent} type={props.type} />
       </div>
 
-      <CopyButton onClick={copyContent} type={props.type} />
+      {!props.capture && (
+        <div className="col-span-6 col-start-3 px-4 py-1 text-xs text-gray-400">
+          {props.caption}
+        </div>
+      )}
     </div>
   );
 };

@@ -1,9 +1,13 @@
 import Textarea from "./Textarea";
 import Inputfield from "./Inputfield";
 import CustomForm from "./CustomForm";
+
 function MessageForm(props) {
   return (
-    <CustomForm onSubmit={props.submitMessage}>
+    <CustomForm
+      onReset={() => props.onReset("")}
+      onSubmit={props.submitMessage}
+    >
       <Textarea
         className="my-4"
         label="message"
@@ -17,7 +21,7 @@ function MessageForm(props) {
         required
       />{" "}
       <Inputfield
-        allowCopy={true}
+        // allowCopy={true}
         className="my-4"
         label="password"
         name="password"

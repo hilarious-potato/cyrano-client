@@ -34,8 +34,16 @@ const LoginDialog = (props) => {
         storeToken(response.data.authToken);
         authenticateUser();
         props.toggle();
+        resetForm();
       })
       .catch((err) => console.error(err));
+  };
+
+  const resetForm = () => {
+    setUser({
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -45,7 +53,7 @@ const LoginDialog = (props) => {
       toggle={props.toggle}
       title="log into your account"
     >
-      <CustomForm onSubmit={(e) => onSubmit(e)}>
+      <CustomForm onReset={() => resetForm()} onSubmit={(e) => onSubmit(e)}>
         <Inputfield
           className=""
           name="email"

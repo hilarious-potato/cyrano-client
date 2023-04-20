@@ -35,8 +35,17 @@ const SignupDialog = (props) => {
         storeToken(response.data.authToken);
         authenticateUser();
         props.toggle();
+        resetForm();
       })
       .catch((err) => console.error(err));
+  };
+
+  const resetForm = () => {
+    setUser({
+      name: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -46,7 +55,7 @@ const SignupDialog = (props) => {
       toggle={props.toggle}
       title="create an account"
     >
-      <Form onSubmit={(e) => onSubmit(e)}>
+      <Form onReset={() => resetForm()} onSubmit={(e) => onSubmit(e)}>
         <Inputfield
           className=""
           name="name"
