@@ -53,7 +53,11 @@ function Tresor() {
                   edit
                 </Button>
                 <Button primary className="">
-                  <Link to={"/messages/" + message.messageId}>open</Link>
+                  <Link
+                    to={`/messages/${message.messageId}#${message.messagePassword}`}
+                  >
+                    open
+                  </Link>
                 </Button>
               </div>
             </div>
