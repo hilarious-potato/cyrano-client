@@ -54,20 +54,30 @@ class TresorServices {
   };
   fetchTresor = async (tresorId) => {
     try {
-      console.log("fetching tresor form this url", "/api/tresors/" + tresorId);
-      const tresorFromDB = await this.api.get("/api/tresors/" + tresorId);
-      console.log("we fetched a tresor and got", tresorFromDB);
-      if (tresorFromDB.data.messages === "empty") {
-        const messages = [];
-        return { ...tresorFromDB, messages };
-      }
-      const password = localStorage.getItem("hashedPassword");
-      const messagesJSON = await decryptMessage(
-        tresorFromDB.data.messages,
-        password
+      console.log(
+        "we are in fetch tresor fetching tresor form this url",
+        "/api/tresors/" + tresorId
       );
-      const messages = JSON.parse(messagesJSON);
-      return { ...tresorFromDB, messages };
+      const tresorFromDB = await this.api.get("/api/tresors/" + tresorId);
+      console.log(
+        "we are in fetch tresor and we fetched a tresor and got",
+        tresorFromDB
+      );
+      if (tresorFromDB.data.messages === "empty") {
+        console.log("messages are empty");
+        const messages = [];
+        return { ...tresorFromDB.data, messages };
+      } else {
+        const password = localStorage.getItem("hashedPassword");
+
+        console.log("we parsed obj from db", tresorFromDB.data.messages);
+        const messagesJSON = await decryptMessage(
+          tresorFromDB.data.messages,
+          password
+        );
+        const messages = JSON.parse(messagesJSON);
+        return { ...tresorFromDB.data, messages };
+      }
     } catch (error) {
       console.error(error);
     }
@@ -132,6 +142,12 @@ class TresorServices {
       data
     );
     return await this.api.put("/api/tresors/" + tresorId, data);
+  };
+  deleteTresor = async (tresorId) => {
+    if (tresorId) {
+      return await this.api.delete("/api/tresors/" + tresorId);
+    }
+    console.log("Hey, we need a tresor Id");
   };
 }
 
