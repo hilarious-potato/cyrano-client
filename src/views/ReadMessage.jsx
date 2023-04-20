@@ -43,19 +43,23 @@ const ReadMessage = () => {
     };
   };
 
-  const getMessage = async (e) => {
-    e.preventDefault();
+  const getMessage = async () => {
     setMessage(null);
     try {
       // console.log("Lets get the message");
       const messageFromDb = await fetchMessage(messageId, password);
       // console.log(messageFromDb);
       setMessage(messageFromDb);
-      toggleDialog();
       renderMessage(messageFromDb);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    getMessage();
+    toggleDialog();
   };
 
   return (
@@ -72,7 +76,7 @@ const ReadMessage = () => {
         open={showDialog}
         toggle={toggleDialog}
         title="enter password"
-        onSubmit={getMessage}
+        onSubmit={handleSubmit}
         password={password}
         onChange={setPassword}
         onReset={setPassword}

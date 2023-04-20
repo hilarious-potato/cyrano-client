@@ -28,7 +28,7 @@ function AddToTresor(props) {
   };
   return (
     <>
-      {!userTresorList && <Spinner />}
+      {!userTresorList && <Spinner context="decrypt" />}
       {userTresorList && (
         <CustomForm onSubmit={pushMessageToTresor}>
           <h2>Please give a nickname to the message and choose a Tresor</h2>
