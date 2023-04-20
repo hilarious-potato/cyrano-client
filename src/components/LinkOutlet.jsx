@@ -40,7 +40,7 @@ const LinkOutlet = (props) => {
         label="password"
         caption="take care of it. if it’s gone – it’s gone!"
         value={
-          props.postedMessage.messagePassword.length > 0
+          props.postedMessage.messagePassword?.length > 0
             ? props.postedMessage.messagePassword
             : "you haven’t provided a password"
         }
