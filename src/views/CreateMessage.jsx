@@ -60,17 +60,10 @@ const CreateMessage = () => {
             <LinkOutlet
               newMessage={resetMessage}
               postedMessage={postedMessage}
+              addToTresor={toggleAddToTresorIsOpen}
               title="🎉 success, your message was encrypted and created"
               subTitle="now you can copy the links and share your message with the world!"
             />
-            <Button
-              onClick={() => {
-                toggleAddToTresorIsOpen();
-              }}
-              primary
-            >
-              Add Message to Tresor
-            </Button>
           </>
         )}
       </section>

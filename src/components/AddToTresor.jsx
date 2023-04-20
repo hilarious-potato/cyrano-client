@@ -5,11 +5,13 @@ import tresorService from "../services/tresor.service";
 import Inputfield from "./Inputfield";
 
 function AddToTresor(props) {
+  console.log("open add to tresor");
   const messageObj = props.messageObj;
   const [uploadTresor, setUploadTresor] = useState("");
   const [userTresorList, setUserTresorList] = useState(null);
   const [messageTitle, setMessageTitle] = useState("");
   useEffect(() => {
+    console.log("now tryin to fetch tresor list");
     tresorService.fetchUserList().then((response) => {
       console.log("fetching Tresors in add tresor gave:", response);
       setUserTresorList(response);
