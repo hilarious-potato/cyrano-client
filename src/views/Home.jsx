@@ -1,7 +1,7 @@
-import CreateMessage from "./CreateMessage";
+import TypedSpinner from "../components/TypedSpinner";
 
 const Home = () => {
-  return <CreateMessage />;
+  return <TypedSpinner context="home" />;
 };
 
 export default Home;
