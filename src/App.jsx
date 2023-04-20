@@ -12,7 +12,7 @@ import CreateMessageDialog from "./components/CreateMessageDialog";
 import Tresors from "./views/Tresors";
 import Tresor from "./views/Tresor";
 import CreateMessage from "./views/CreateMessage";
-
+import IsPrivate from "./components/IsPrivate/IsPrivate";
 function App() {
   const [signupIsOpen, setSignupIsOpen] = useState(false);
   const [loginIsOpen, setLoginIsOpen] = useState(false);
@@ -33,8 +33,22 @@ function App() {
           <Route path="/write" element={<CreateMessage />} />
           <Route path="/messages/edit/:editId" element={<EditMessage />} />
           <Route path="/messages/:messageId" element={<ReadMessage />} />
-          <Route path="/tresors" element={<Tresors />} />
-          <Route path="/tresors/:tresorId" element={<Tresor />} />
+          <Route
+            path="/tresors"
+            element={
+              <IsPrivate>
+                <Tresors />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/tresors/:tresorId"
+            element={
+              <IsPrivate>
+                <Tresor />
+              </IsPrivate>
+            }
+          />
         </Routes>
       </main>
       <SignupDialog id="signup" open={signupIsOpen} toggle={toggleSignup} />
