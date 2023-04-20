@@ -29,7 +29,12 @@ class AuthService {
       const additionalInfo = await this.api.post("/auth/login/salt", {
         email,
       });
-      const { salt } = additionalInfo;
+      console.log(
+        "we are in auth services login and asked for salt from server",
+        additionalInfo
+      );
+      const { salt } = additionalInfo.data;
+      console.log("we are in auth services login and destructured salt", salt);
       const { password } = await hashPassword(unhashedPassword, salt);
       const requestBody = { ...userData, password };
       console.log("try to login...", requestBody);
