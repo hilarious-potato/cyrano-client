@@ -49,6 +49,7 @@ function App() {
               </IsPrivate>
             }
           />
+          <Route path="/*" element={<p>Not found</p>} />
         </Routes>
       </main>
       <SignupDialog id="signup" open={signupIsOpen} toggle={toggleSignup} />
