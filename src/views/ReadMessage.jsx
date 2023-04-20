@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import Spinner from "../components/Spinner";
+import TypedSpinner from "../components/TypedSpinner";
 import PWDialog from "../components/PWDialog";
 import Header from "../components/Header";
 import fetchMessage from "../utils/fetchMessage";
@@ -63,7 +63,7 @@ const ReadMessage = () => {
       <section className="ReadMessage xxl:w-1/3 relative lg:w-2/3">
         <Header title="cyrano has sent you a message" />
         <article className="relative overflow-auto">
-          {!message && <Spinner />}
+          {!message && <TypedSpinner />}
           <span ref={typedOutput} />
           {!message && <span className="typed-cursor" />}
         </article>
