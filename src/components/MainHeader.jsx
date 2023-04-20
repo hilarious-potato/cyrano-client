@@ -19,6 +19,12 @@ const Header = (props) => {
       </Link>
 
       <div>
+        <Link to="/write">
+          <Button className="mr-4" primary>
+            write a message
+          </Button>
+        </Link>
+
         {!isLoggedIn && (
           <>
             <Button
@@ -39,18 +45,21 @@ const Header = (props) => {
           </>
         )}
         {isLoggedIn && (
-          <Button
-            onClick={() => {
-              handleLogout();
-            }}
-          >
-            logout
-          </Button>
+          <>
+            <Link to="/tresors">
+              <Button className="mr-4" secondary>
+                your tresors
+              </Button>
+            </Link>
+            <Button
+              onClick={() => {
+                handleLogout();
+              }}
+            >
+              logout
+            </Button>
+          </>
         )}
-
-        <Button className="mr-4" primary>
-          <Link to="/write">write a message</Link>
-        </Button>
       </div>
     </header>
   );
