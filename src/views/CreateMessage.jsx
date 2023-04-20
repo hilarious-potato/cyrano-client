@@ -74,7 +74,10 @@ const CreateMessage = () => {
           open={addToTresorIsOpen}
           toggle={setAddToTresorIsOpen}
         >
-          <AddToTresor messageObj={postedMessage}></AddToTresor>
+          <AddToTresor
+            messageObj={postedMessage}
+            toggleDialogue={toggleAddToTresorIsOpen}
+          ></AddToTresor>
         </Dialog>
       )}
     </>
