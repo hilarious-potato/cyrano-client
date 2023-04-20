@@ -6,10 +6,13 @@ import ReadMessage from "./views/ReadMessage";
 import EditMessage from "./views/EditMessage";
 import SignupDialog from "./components/SignupDialog";
 import LoginDialog from "./components/LoginDialog";
-import { useContext } from "react";
-import { AuthContext } from "./context/auth.context";
+import CreateMessageDialog from "./components/CreateMessageDialog";
+// import { useContext } from "react";
+// import { AuthContext } from "./context/auth.context";
 import Tresors from "./views/Tresors";
 import Tresor from "./views/Tresor";
+import CreateMessage from "./views/CreateMessage";
+import IsPrivate from "./components/IsPrivate/IsPrivate";
 function App() {
   const [signupIsOpen, setSignupIsOpen] = useState(false);
   const [loginIsOpen, setLoginIsOpen] = useState(false);
@@ -27,10 +30,26 @@ function App() {
       <main className="flex w-full justify-center overflow-auto px-4 md:px-8 xl:px-16">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/write" element={<CreateMessage />} />
           <Route path="/messages/edit/:editId" element={<EditMessage />} />
           <Route path="/messages/:messageId" element={<ReadMessage />} />
-          <Route path="/tresors" element={<Tresors />} />
-          <Route path="/tresors/:tresorId" element={<Tresor />} />
+          <Route
+            path="/tresors"
+            element={
+              <IsPrivate>
+                <Tresors />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/tresors/:tresorId"
+            element={
+              <IsPrivate>
+                <Tresor />
+              </IsPrivate>
+            }
+          />
+          <Route path="/*" element={<p>Not found</p>} />
         </Routes>
       </main>
       <SignupDialog id="signup" open={signupIsOpen} toggle={toggleSignup} />

@@ -6,13 +6,13 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#FF550B",
+          DEFAULT: "rgb(var(--color-primary) / <alpha-value>)", // 255 85 11
         },
         secondary: {
-          DEFAULT: "#0F81C7",
+          DEFAULT: "rgb(var(--color-secondary) / <alpha-value>)", // 255 85 11
         },
         warning: {
-          DEFAULT: "#FF304F",
+          DEFAULT: "rgb(var(--color-warning) / <alpha-value>)", // 255 85 11
         },
       },
       fontFamily: {

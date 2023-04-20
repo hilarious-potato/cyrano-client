@@ -13,7 +13,7 @@ function IsPrivate({ children }) {
 
   if (!isLoggedIn) {
     // If the user is not logged in navigate to the login page ❌
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
   // If the user is logged in, allow to see the page ✅
   return children;

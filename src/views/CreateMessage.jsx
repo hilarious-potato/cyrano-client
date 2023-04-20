@@ -44,8 +44,8 @@ const CreateMessage = () => {
 
   return (
     <>
-      <section className="CreateMessage relative w-4/5 ">
-        <Header title="Create a Message" />
+      <section className="CreateMessage">
+        <Header title="write a message" />
         {!postedMessage && (
           <MessageForm
             password={password}
@@ -74,7 +74,10 @@ const CreateMessage = () => {
           open={addToTresorIsOpen}
           toggle={setAddToTresorIsOpen}
         >
-          <AddToTresor messageObj={postedMessage}></AddToTresor>
+          <AddToTresor
+            messageObj={postedMessage}
+            toggleDialogue={toggleAddToTresorIsOpen}
+          ></AddToTresor>
         </Dialog>
       )}
     </>
