@@ -5,13 +5,15 @@ const spinnerText = {
   home: [
     "<span class='text-primary italic'>cyrano</span> welcomes you!🥳",
     "<span class='text-primary italic'>cyrano</span> encrypts your message.",
-    "<span class='text-primary italic'>cyrano</span> sends your message.",
+    "<span class='text-primary italic'>cyrano</span> let you share your message secretly.",
     "<span class='text-primary italic'>cyrano</span> doesn’t read your message.",
-    "<span class='text-primary italic'>cyrano</span> allows others to read your message.",
-    "<span class='text-primary italic'>cyrano</span> allows others to edit your message.",
-    "<span class='text-primary italic'>cyrano</span> would to spell check your message,",
-    "but it cant, because",
-    "<span class='text-primary italic'>cyrano</span> doesn’t read your message!😉",
+    "<span class='text-primary italic'>cyrano</span> allows others to read your message...",
+    "if they have the right password.",
+    "you can edit or delete your message later.",
+    "<span class='text-primary italic'>cyrano</span> would like to spell check your message,",
+    "but <span class='text-primary italic'>cyrano</span> can't, because",
+    "<span class='text-primary italic'>cyrano</span> can’t read your messages!😉",
+    "Do you trust <span class='text-primary italic'>cyrano</span>?",
   ],
   decrypt: [
     "... decrypting!", // English
