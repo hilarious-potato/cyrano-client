@@ -14,7 +14,7 @@ const LoginDialog = (props) => {
     email: "",
     password: "",
   });
-
+  const [error, setError] = useState(null);
   const onChange = (event) => {
     setUser((prevState) => {
       return { ...prevState, [event.target.name]: event.target.value };
@@ -41,7 +41,10 @@ const LoginDialog = (props) => {
         props.toggle();
         resetForm();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setError(err.response.data.message);
+        console.error(err);
+      });
   };
 
   const resetForm = () => {
@@ -57,6 +60,7 @@ const LoginDialog = (props) => {
       open={props.open}
       toggle={props.toggle}
       title="log into your account"
+      message={error}
     >
       <CustomForm onReset={() => resetForm()} onSubmit={(e) => onSubmit(e)}>
         <Inputfield

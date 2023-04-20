@@ -2,7 +2,7 @@ import TypedSpinner from "../components/TypedSpinner";
 
 const Home = () => {
   return (
-    <div className="relative text-3xl">
+    <div className="relative pt-16 text-3xl">
       <TypedSpinner context="home" />
     </div>
   );

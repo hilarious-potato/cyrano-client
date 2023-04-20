@@ -11,6 +11,7 @@ function CreateTresor(props) {
       const newTresor = await tresorService.create(title);
       console.log(newTresor);
       props.fetchTresors();
+      setTitle("");
     };
     callTresorCreation();
   };
@@ -18,6 +19,7 @@ function CreateTresor(props) {
     <>
       <CustomForm onSubmit={handleSubmit}>
         <Inputfield
+          required
           allowCopy={false}
           className="my-4"
           label="title"

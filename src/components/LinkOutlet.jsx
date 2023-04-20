@@ -45,8 +45,20 @@ const LinkOutlet = (props) => {
             : "you haven’t provided a password"
         }
       />
-      <div className="grid justify-end space-y-4">
+      <div className="grid grid-cols-6 gap-4 ">
+        {isLoggedIn && (
+          <Button
+            className="col-span-3 xl:col-span-2 xl:col-start-3"
+            onClick={() => {
+              props.addToTresor();
+            }}
+            secondary
+          >
+            add to tresor
+          </Button>
+        )}
         <Button
+          className="col-span-3 xl:col-span-2  "
           onClick={() => {
             props.newMessage();
           }}
@@ -54,16 +66,6 @@ const LinkOutlet = (props) => {
         >
           new message
         </Button>
-        {isLoggedIn && (
-          <Button
-            onClick={() => {
-              props.addToTresor();
-            }}
-            secondary
-          >
-            Add Message to Tresor
-          </Button>
-        )}
       </div>
     </div>
   );

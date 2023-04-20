@@ -13,6 +13,7 @@ const SignupDialog = (props) => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState(null);
 
   const onChange = (event) => {
     setUser((prevState) => {
@@ -37,7 +38,10 @@ const SignupDialog = (props) => {
         props.toggle();
         resetForm();
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setError(err.response.data.message);
+        console.error(err);
+      });
   };
 
   const resetForm = () => {
@@ -54,6 +58,7 @@ const SignupDialog = (props) => {
       open={props.open}
       toggle={props.toggle}
       title="create an account"
+      message={error}
     >
       <Form onReset={() => resetForm()} onSubmit={(e) => onSubmit(e)}>
         <Inputfield
