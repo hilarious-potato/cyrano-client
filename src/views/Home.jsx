@@ -1,7 +1,11 @@
 import CreateMessage from "./CreateMessage";
 
 const Home = () => {
-  return <CreateMessage />;
+  return (
+    <>
+      <CreateMessage />;
+    </>
+  );
 };
 
 export default Home;

@@ -63,7 +63,7 @@ const ReadMessage = () => {
       <section className="ReadMessage xxl:w-1/3 relative lg:w-2/3">
         <Header title="cyrano has sent you a message" />
         <article className="relative overflow-auto">
-          {!message && <Spinner />}
+          {!message && <Spinner context="decrypt" />}
           <span ref={typedOutput} />
           {!message && <span className="typed-cursor" />}
         </article>
