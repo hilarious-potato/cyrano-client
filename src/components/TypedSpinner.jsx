@@ -143,6 +143,7 @@ const Spinner = (props) => {
       strings: spinnerText[props.context],
       typeSpeed: 50,
       backSpeed: 50,
+      loop: props.context,
     };
 
     // elRef refers to the <span> rendered below

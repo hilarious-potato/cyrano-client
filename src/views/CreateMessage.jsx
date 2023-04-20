@@ -44,27 +44,30 @@ const CreateMessage = () => {
 
   return (
     <>
-      {!postedMessage && (
-        <MessageForm
-          password={password}
-          setPassword={setPassword}
-          message={message}
-          setMessage={setMessage}
-          submitMessage={submitMessage}
-          onReset={setMessage}
-        />
-      )}
-      {postedMessage && (
-        <>
-          <LinkOutlet
-            newMessage={resetMessage}
-            postedMessage={postedMessage}
-            addToTresor={toggleAddToTresorIsOpen}
-            title="🎉 success, your message was encrypted and created"
-            subTitle="now you can copy the links and share your message with the world!"
+      <section className="CreateMessage">
+        <Header title="write a message" />
+        {!postedMessage && (
+          <MessageForm
+            password={password}
+            setPassword={setPassword}
+            message={message}
+            setMessage={setMessage}
+            submitMessage={submitMessage}
+            onReset={setMessage}
           />
-        </>
-      )}
+        )}
+        {postedMessage && (
+          <>
+            <LinkOutlet
+              newMessage={resetMessage}
+              postedMessage={postedMessage}
+              addToTresor={toggleAddToTresorIsOpen}
+              title="🎉 success, your message was encrypted and created"
+              subTitle="now you can copy the links and share your message with the world!"
+            />
+          </>
+        )}
+      </section>
       {isLoggedIn && (
         <Dialog
           id="addToTresor"
