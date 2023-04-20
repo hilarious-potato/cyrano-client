@@ -1,7 +1,10 @@
 import Outputfield from "../components/Outputfield";
 import Button from "../components/Button";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 const LinkOutlet = (props) => {
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <div>
       <div className="my-6 rounded-lg border border-secondary p-4">
@@ -38,11 +41,11 @@ const LinkOutlet = (props) => {
         caption="take care of it. if it’s gone – it’s gone!"
         value={
           props.postedMessage.messagePassword.length > 0
-            ? props.postedMessage.messagePassword.length
+            ? props.postedMessage.messagePassword
             : "you haven’t provided a password"
         }
       />
-      <div className="grid justify-end">
+      <div className="grid justify-end space-y-4">
         <Button
           onClick={() => {
             props.newMessage();
@@ -51,6 +54,16 @@ const LinkOutlet = (props) => {
         >
           new message
         </Button>
+        {isLoggedIn && (
+          <Button
+            onClick={() => {
+              props.addToTresor();
+            }}
+            secondary
+          >
+            Add Message to Tresor
+          </Button>
+        )}
       </div>
     </div>
   );

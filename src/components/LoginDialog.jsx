@@ -7,7 +7,8 @@ import authService from "../services/auth.service";
 import { AuthContext } from "../context/auth.context";
 
 const LoginDialog = (props) => {
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser, storeUserPasswordHash } =
+    useContext(AuthContext);
 
   const [user, setUser] = useState({
     email: "",
@@ -32,7 +33,11 @@ const LoginDialog = (props) => {
       .login(user)
       .then((response) => {
         storeToken(response.data.authToken);
+
         authenticateUser();
+        return storeUserPasswordHash(user.password);
+      })
+      .then(() => {
         props.toggle();
         resetForm();
       })

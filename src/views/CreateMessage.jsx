@@ -4,12 +4,19 @@ import generatePassword from "../utils/generatePassword";
 import MessageForm from "../components/MessageForm";
 import Header from "../components/Header";
 import LinkOutlet from "../components/LinkOutlet";
+import Button from "../components/Button";
+import Dialog from "../components/Dialog";
+import AddToTresor from "../components/AddToTresor";
 
 const CreateMessage = () => {
   const [message, setMessage] = useState("");
   const [password, setPassword] = useState("");
   const [postedMessage, setPostedMessage] = useState(null);
+  const [addToTresorIsOpen, setAddToTresorIsOpen] = useState(false);
 
+  const toggleAddToTresorIsOpen = () => {
+    setAddToTresorIsOpen((previousState) => !previousState);
+  };
   useEffect(() => {
     setPassword(generatePassword());
   }, []);
@@ -35,27 +42,39 @@ const CreateMessage = () => {
   };
 
   return (
-    <section className="CreateMessage relative w-4/5 ">
-      <Header title="Create a Message" />
-      {!postedMessage && (
-        <MessageForm
-          password={password}
-          setPassword={setPassword}
-          message={message}
-          setMessage={setMessage}
-          submitMessage={submitMessage}
-          onReset={setMessage}
-        />
-      )}
-      {postedMessage && (
-        <LinkOutlet
-          newMessage={resetMessage}
-          postedMessage={postedMessage}
-          title="🎉 success, your message was encrypted and created"
-          subTitle="now you can copy the links and share your message with the world!"
-        />
-      )}
-    </section>
+    <>
+      <section className="CreateMessage relative w-4/5 ">
+        <Header title="Create a Message" />
+        {!postedMessage && (
+          <MessageForm
+            password={password}
+            setPassword={setPassword}
+            message={message}
+            setMessage={setMessage}
+            submitMessage={submitMessage}
+            onReset={setMessage}
+          />
+        )}
+        {postedMessage && (
+          <>
+            <LinkOutlet
+              newMessage={resetMessage}
+              postedMessage={postedMessage}
+              addToTresor={toggleAddToTresorIsOpen}
+              title="🎉 success, your message was encrypted and created"
+              subTitle="now you can copy the links and share your message with the world!"
+            />
+          </>
+        )}
+      </section>
+      <Dialog
+        id="addToTresor"
+        open={addToTresorIsOpen}
+        toggle={setAddToTresorIsOpen}
+      >
+        <AddToTresor messageObj={postedMessage}></AddToTresor>
+      </Dialog>
+    </>
   );
 };
 

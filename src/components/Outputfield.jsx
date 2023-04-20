@@ -21,13 +21,13 @@ const Outputfield = (props) => {
 
   return (
     <div
-      className={`gap-y-0font-body relative my-4 grid grid-cols-8 gap-x-4 ${props.className}`}
+      className={`relative my-4 grid gap-x-4 gap-y-0 font-body md:grid-cols-8 ${props.className}`}
     >
-      <label className="col-span-2 flex flex-col justify-center text-right text-gray-400">
+      <label className="flex flex-col justify-center text-gray-400 md:col-span-2 md:text-right">
         {props.label}
       </label>
 
-      <div className="relative col-span-6 overflow-hidden truncate rounded-md border border-gray-600 bg-gray-800 px-3 py-1 text-gray-200 ring-primary focus:ring-2">
+      <div className="relative overflow-hidden truncate rounded-md border border-gray-600 bg-gray-800 px-3 py-1 text-gray-200 ring-primary focus:ring-2 md:col-span-6">
         {props.type === "link" ? (
           <a className="text-secondary underline" href={props.value}>
             {props.value}
@@ -39,7 +39,7 @@ const Outputfield = (props) => {
       </div>
 
       {!props.capture && (
-        <div className="col-span-6 col-start-3 px-4 py-1 text-xs text-gray-400">
+        <div className="px-4 py-1 text-xs text-gray-400 md:col-span-6 md:col-start-3">
           {props.caption}
         </div>
       )}
