@@ -1,3 +1,4 @@
+import Alert from "./Alert";
 import Button from "./Button";
 import Header from "./Header";
 
@@ -26,6 +27,7 @@ const Dialog = (props) => {
             close
           </Button>
         </Header>
+        {props.message && <Alert message={props.message} />}
         {props.children}
       </dialog>
     </div>

@@ -3,7 +3,7 @@ import CopyButton from "./CopyButton";
 const Inputfield = (props) => {
   return (
     <div
-      className={`gap-y-0font-body relative my-4 grid gap-x-4 md:grid-cols-8 ${props.className}`}
+      className={`relative my-4 grid gap-x-4 gap-y-0 font-body md:grid-cols-8 ${props.className}`}
     >
       <label
         className="flex flex-col justify-center text-gray-400 md:col-span-2 md:text-right"

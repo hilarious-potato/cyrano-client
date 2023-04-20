@@ -13,6 +13,7 @@ import Tresors from "./views/Tresors";
 import Tresor from "./views/Tresor";
 import CreateMessage from "./views/CreateMessage";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
+import Alert from "./components/Alert";
 function App() {
   const [signupIsOpen, setSignupIsOpen] = useState(false);
   const [loginIsOpen, setLoginIsOpen] = useState(false);
@@ -49,7 +50,16 @@ function App() {
               </IsPrivate>
             }
           />
-          <Route path="/*" element={<p>Not found</p>} />
+          <Route
+            path="/*"
+            element={
+              <Alert
+                message="404: Page not found ¯\_(ツ)_/¯
+
+"
+              />
+            }
+          />
         </Routes>
       </main>
       <SignupDialog id="signup" open={signupIsOpen} toggle={toggleSignup} />
