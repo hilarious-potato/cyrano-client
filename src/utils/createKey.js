@@ -12,7 +12,7 @@ async function createKey(password, salt) {
       {
         name: "PBKDF2",
         salt: salt,
-        iterations: 10000,
+        iterations: 1000000,
         hash: "SHA-256",
       },
       keyMaterial,
