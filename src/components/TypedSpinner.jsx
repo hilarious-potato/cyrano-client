@@ -150,10 +150,10 @@ const Spinner = (props) => {
 
   useEffect(() => {
     const options = {
-      strings: spinnerText[props.context],
+      strings: spinnerText[props.context || "home"],
       typeSpeed: 50,
       backSpeed: 50,
-      loop: props.context,
+      loop: true,
     };
 
     // elRef refers to the <span> rendered below
@@ -167,7 +167,7 @@ const Spinner = (props) => {
   }, []);
 
   return (
-    <div className="Spinner flex-column m-auto flex min-h-full justify-center">
+    <div className="Spinner">
       <span ref={typedOutput} />
       <span className="typed-cursor" />
     </div>

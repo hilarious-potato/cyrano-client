@@ -25,9 +25,9 @@ function App() {
   };
 
   return (
-    <div className="App fixed h-screen w-screen overflow-auto bg-gray-800 pb-16 font-body text-gray-200">
+    <div className="App fixed h-screen w-screen overflow-auto bg-gray-800 px-4 pb-16 font-body text-gray-200 md:px-8 xl:px-16">
       <MainHeader toggleSignup={toggleSignup} toggleLogin={toggleLogin} />
-      <main className="flex w-full justify-center overflow-auto px-4 md:px-8 xl:px-16">
+      <main className="mx-auto mt-4 md:w-4/5 lg:mt-12 lg:w-2/3 xl:w-1/2 2xl:w-1/3">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/write" element={<CreateMessage />} />
