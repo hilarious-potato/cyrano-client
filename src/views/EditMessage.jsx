@@ -90,7 +90,7 @@ export default function EditMessage(props) {
         {postedMessage && (
           <LinkOutlet
             newMessage={resetMessage}
-            postedMessage={postMessage}
+            postedMessage={postedMessage}
             title="🎉 success, the message was encrypted and updated"
             subTitle="now you can copy the links and share your message with the world!"
           />
