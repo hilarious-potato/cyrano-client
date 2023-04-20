@@ -4,6 +4,7 @@ import tresorService from "../services/tresor.service";
 import Outputfield from "../components/Outputfield";
 import Button from "../components/Button";
 import Header from "../components/Header";
+import TypedSpinner from "../components/TypedSpinner";
 function Tresor() {
   const [messages, setMessages] = useState(null);
   const [tresorTitle, setTresorTitle] = useState(null);
@@ -30,9 +31,17 @@ function Tresor() {
       fetchTresorData();
     });
   };
+  const renderEmptyTresor = () => {
+    if (!messages || messages.length === 0) {
+      return <TypedSpinner context="emptyTresor" />;
+    }
+    return <></>;
+  };
   return (
     <section className="xxl:w-1/3 relative lg:w-2/3">
       <Header title={"tresor: " + tresorTitle} />
+
+      {renderEmptyTresor()}
       {messages &&
         messages.length > 0 &&
         messages.map((message) => {

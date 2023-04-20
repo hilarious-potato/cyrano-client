@@ -130,6 +130,14 @@ const spinnerText = {
     "...criptare", // Romanian (variant)
     "...暗号化", // Japanese
   ],
+  emptyTresor: [
+    "...this tresor is still empty",
+    "...create a message and add it",
+  ],
+  emptyTresors: [
+    "...this tresor list is still empty",
+    "...create a new tresor",
+  ],
 };
 
 const Spinner = (props) => {

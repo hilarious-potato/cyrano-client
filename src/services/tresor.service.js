@@ -40,6 +40,10 @@ class TresorServices {
   };
   create = async (title) => {
     try {
+      if (!title) {
+        console.log("provide title");
+        return;
+      }
       const userPassword = localStorage.getItem("hashedPassword");
       const salt = await arrayBufferToB64(
         window.crypto.getRandomValues(new Uint8Array(16))
