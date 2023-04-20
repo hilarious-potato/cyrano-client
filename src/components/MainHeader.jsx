@@ -47,6 +47,16 @@ const Header = (props) => {
             logout
           </Button>
         )}
+
+        <Button
+          className="mr-4"
+          onClick={() => {
+            props.toggleCreateMessage();
+          }}
+          primary
+        >
+          write a message
+        </Button>
       </div>
     </header>
   );
