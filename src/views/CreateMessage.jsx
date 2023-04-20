@@ -1,18 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import postMessage from "../utils/postMessage";
 import generatePassword from "../utils/generatePassword";
 import MessageForm from "../components/MessageForm";
 import Header from "../components/Header";
 import LinkOutlet from "../components/LinkOutlet";
-import Button from "../components/Button";
 import Dialog from "../components/Dialog";
 import AddToTresor from "../components/AddToTresor";
+import { AuthContext } from "../context/auth.context";
 
 const CreateMessage = () => {
   const [message, setMessage] = useState("");
   const [password, setPassword] = useState("");
   const [postedMessage, setPostedMessage] = useState(null);
   const [addToTresorIsOpen, setAddToTresorIsOpen] = useState(false);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const toggleAddToTresorIsOpen = () => {
     setAddToTresorIsOpen((previousState) => !previousState);
@@ -67,13 +68,15 @@ const CreateMessage = () => {
           </>
         )}
       </section>
-      <Dialog
-        id="addToTresor"
-        open={addToTresorIsOpen}
-        toggle={setAddToTresorIsOpen}
-      >
-        <AddToTresor messageObj={postedMessage}></AddToTresor>
-      </Dialog>
+      {isLoggedIn && (
+        <Dialog
+          id="addToTresor"
+          open={addToTresorIsOpen}
+          toggle={setAddToTresorIsOpen}
+        >
+          <AddToTresor messageObj={postedMessage}></AddToTresor>
+        </Dialog>
+      )}
     </>
   );
 };
