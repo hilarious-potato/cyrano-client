@@ -11,7 +11,7 @@ function AddToTresor(props) {
   const [userTresorList, setUserTresorList] = useState(null);
   const [messageTitle, setMessageTitle] = useState("");
   useEffect(() => {
-    if (userTresorList) {
+    if (userTresorList && userTresorList.length > 0) {
       setUploadTresor(userTresorList[0]._id);
     }
   }, [userTresorList]);
@@ -38,7 +38,7 @@ function AddToTresor(props) {
   return (
     <>
       {!userTresorList && <Spinner />}
-      {userTresorList && (
+      {userTresorList && userTresorList.length > 0 && (
         <CustomForm onSubmit={pushMessageToTresor}>
           <h2>Please give a nickname to the message and choose a Tresor</h2>
           <Inputfield
