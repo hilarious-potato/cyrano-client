@@ -45,16 +45,17 @@ function Tresor() {
               <h2 className="text-xl ">{message.title}</h2>
               <div className="grid w-full grid-cols-4 gap-2">
                 <Link
+                  className="col-start-3"
                   to={`/messages/edit/${message.editId}#${message.messagePassword}`}
                 >
-                  <Button secondary className="col-start-3">
+                  <Button secondary className="w-full">
                     edit
                   </Button>
                 </Link>
                 <Link
                   to={`/messages/${message.messageId}#${message.messagePassword}`}
                 >
-                  <Button primary className="">
+                  <Button primary className="w-full">
                     open
                   </Button>
                 </Link>
