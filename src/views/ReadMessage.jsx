@@ -6,11 +6,10 @@ import Header from "../components/Header";
 import fetchMessage from "../utils/fetchMessage";
 
 import Typed from "typed.js";
+import Alert from "../components/Alert";
 
 const ReadMessage = () => {
-  console.log("WE Are in the read message comp");
   const { messageId } = useParams();
-  console.log(messageId);
   const [message, setMessage] = useState(null);
   const [password, setPassword] = useState("");
   const [showDialog, setShowDialog] = useState(true);
@@ -20,7 +19,6 @@ const ReadMessage = () => {
     const fragment = window.location.hash;
     if (fragment) {
       setPassword(fragment.slice(1));
-      // console.log("extracted pw");
     }
   }, []);
 
@@ -43,24 +41,30 @@ const ReadMessage = () => {
     };
   };
 
-  const getMessage = async (e) => {
-    e.preventDefault();
-    setMessage(null);
+  const getMessage = async () => {
     try {
       // console.log("Lets get the message");
       const messageFromDb = await fetchMessage(messageId, password);
       // console.log(messageFromDb);
+
       setMessage(messageFromDb);
-      toggleDialog();
       renderMessage(messageFromDb);
     } catch (error) {
+      <Alert message="We could not fetch your message from the server, maybe it was deleted or your link is wrong" />;
       console.error(error);
     }
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setMessage(null);
+    getMessage();
+    toggleDialog();
+  };
+
   return (
     <>
-      <section className="ReadMessage xxl:w-1/3 relative lg:w-2/3">
+      <section className="ReadMessage relative">
         <Header title="cyrano has sent you a message" />
         <article className="relative overflow-auto">
           {!message && <TypedSpinner context="decrypt" />}
@@ -72,7 +76,7 @@ const ReadMessage = () => {
         open={showDialog}
         toggle={toggleDialog}
         title="enter password"
-        onSubmit={getMessage}
+        onSubmit={handleSubmit}
         password={password}
         onChange={setPassword}
         onReset={setPassword}

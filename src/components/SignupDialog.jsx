@@ -26,7 +26,6 @@ const SignupDialog = (props) => {
     authService
       .signup(user)
       .then((response) => {
-        console.log(response.data);
         return authService.login({
           email: user.email,
           password: user.password,

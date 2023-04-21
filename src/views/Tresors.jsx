@@ -11,7 +11,6 @@ function Tresors() {
   const { authenticateUser, user } = useContext(AuthContext);
   const [tresorList, setTresorList] = useState(null);
   const fetchTresors = () => {
-    console.log("now we are in tresors and user is", user);
     if (user) {
       tresorService.fetchUserList().then((usersTresors) => {
         setTresorList(usersTresors);
@@ -24,7 +23,6 @@ function Tresors() {
   }, [user]);
   const handleDelete = (tresorId) => {
     tresorService.deleteTresor(tresorId).then((deletedTresor) => {
-      console.log("we deleted", deletedTresor);
       fetchTresors();
     });
   };
@@ -49,7 +47,7 @@ function Tresors() {
             {tresorList.map((tresor) => {
               return (
                 <div
-                  className="my-4 grid w-full gap-2 rounded-xl p-4 outline-1 hover:outline  hover:outline-gray-500"
+                  className="my-4 mb-4 grid w-full gap-2 rounded-xl p-4 outline outline-1  outline-gray-500"
                   key={tresor._id}
                 >
                   <h2 className="text-xl ">{tresor.title}</h2>

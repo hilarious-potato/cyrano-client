@@ -10,16 +10,9 @@ function Tresor() {
   const [tresorTitle, setTresorTitle] = useState(null);
   const { tresorId } = useParams();
   const fetchTresorData = () => {
-    console.log(
-      "we are in fetch tresor data and will try to fetch tresor",
-      tresorId
-    );
     tresorService.fetchTresor(tresorId).then((tresorObj) => {
-      console.log(" we are in tresor view and we fetched tresor", tresorObj);
-      console.log("setting Tresor title");
       setMessages(tresorObj.messages);
       setTresorTitle(tresorObj.title);
-      console.log(tresorTitle);
     });
   };
   useEffect(() => {
@@ -27,7 +20,6 @@ function Tresor() {
   }, [tresorId]);
   const handleRemove = (messageToRemove) => {
     tresorService.removeMessage(tresorId, messageToRemove).then((response) => {
-      console.log(response);
       fetchTresorData();
     });
   };
@@ -47,27 +39,26 @@ function Tresor() {
         messages.map((message) => {
           return (
             <div
-              className="my-4 grid w-full gap-2 rounded-xl p-4 outline-1 hover:outline  hover:outline-gray-500"
+              className="my-4 mb-4 grid w-full gap-2 rounded-xl p-4 outline outline-1 outline-gray-500"
               key={message.messageId}
             >
               <h2 className="text-xl ">{message.title}</h2>
               <div className="grid w-full grid-cols-4 gap-2">
-                <Button
-                  onClick={() => {
-                    // handleDelete(tresor._id);
-                  }}
-                  secondary
+                <Link
                   className="col-start-3"
+                  to={`/messages/edit/${message.editId}#${message.messagePassword}`}
                 >
-                  edit
-                </Button>
-                <Button primary className="">
-                  <Link
-                    to={`/messages/${message.messageId}#${message.messagePassword}`}
-                  >
+                  <Button secondary className="w-full">
+                    edit
+                  </Button>
+                </Link>
+                <Link
+                  to={`/messages/${message.messageId}#${message.messagePassword}`}
+                >
+                  <Button primary className="w-full">
                     open
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </div>
             </div>
           );

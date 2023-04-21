@@ -9,7 +9,6 @@ function CreateTresor(props) {
     e.preventDefault();
     const callTresorCreation = async () => {
       const newTresor = await tresorService.create(title);
-      console.log(newTresor);
       props.fetchTresors();
       setTitle("");
     };

@@ -14,6 +14,8 @@ import Tresor from "./views/Tresor";
 import CreateMessage from "./views/CreateMessage";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import Alert from "./components/Alert";
+
+import MainFooter from "./components/MainFooter";
 function App() {
   const [signupIsOpen, setSignupIsOpen] = useState(false);
   const [loginIsOpen, setLoginIsOpen] = useState(false);
@@ -26,9 +28,9 @@ function App() {
   };
 
   return (
-    <div className="App fixed h-screen w-screen overflow-auto bg-gray-800 px-4 pb-16 font-body text-gray-200 md:px-8 xl:px-16">
+    <div className="App fixed h-screen w-screen overflow-auto bg-gray-800  font-body text-gray-200 ">
       <MainHeader toggleSignup={toggleSignup} toggleLogin={toggleLogin} />
-      <main className="mx-auto mt-4 md:w-4/5 lg:mt-12 lg:w-2/3 xl:w-1/2 2xl:w-1/3">
+      <main className="mx-auto mt-4 h-full px-4 pb-16 md:w-4/5 md:px-8 lg:mt-12 lg:w-2/3 xl:w-1/2  xl:px-16 2xl:w-1/3">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/write" element={<CreateMessage />} />
@@ -52,16 +54,11 @@ function App() {
           />
           <Route
             path="/*"
-            element={
-              <Alert
-                message="404: Page not found ¯\_(ツ)_/¯
-
-"
-              />
-            }
+            element={<Alert message="404: Page not found ¯\_(ツ)_/¯" />}
           />
         </Routes>
       </main>
+      <MainFooter />
       <SignupDialog id="signup" open={signupIsOpen} toggle={toggleSignup} />
       <LoginDialog id="login" open={loginIsOpen} toggle={toggleLogin} />
     </div>
