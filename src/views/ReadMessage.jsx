@@ -65,7 +65,7 @@ const ReadMessage = () => {
 
   return (
     <>
-      <section className="ReadMessage xxl:w-1/3 relative lg:w-2/3">
+      <section className="ReadMessage relative">
         <Header title="cyrano has sent you a message" />
         <article className="relative overflow-auto">
           {!message && <TypedSpinner context="decrypt" />}
