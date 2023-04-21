@@ -13,7 +13,7 @@ const Header = (props) => {
   };
 
   return (
-    <header className="sticky top-0 z-10 grid grid-cols-6 items-baseline gap-4 bg-gray-800/25 py-4 backdrop-blur-sm">
+    <header className="sticky top-0 z-10 grid grid-cols-6 items-baseline gap-4 bg-gray-800/25 py-4 backdrop-blur-sm md:px-8 xl:px-16">
       <Link className="col-span-2" to="/">
         <h1 className="font-body text-4xl italic text-primary ">cyrano</h1>
       </Link>
