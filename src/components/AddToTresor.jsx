@@ -6,7 +6,6 @@ import Inputfield from "./Inputfield";
 import Header from "./Header";
 
 function AddToTresor(props) {
-  console.log("open add to tresor");
   const messageObj = props.messageObj;
   const [uploadTresor, setUploadTresor] = useState("");
   const [userTresorList, setUserTresorList] = useState(null);
@@ -17,11 +16,8 @@ function AddToTresor(props) {
     }
   }, [userTresorList]);
   useEffect(() => {
-    console.log("now tryin to fetch tresor list");
     tresorService.fetchUserList().then((response) => {
-      console.log("fetching Tresors in add tresor gave:", response);
       setUserTresorList(response);
-      console.log("we set Tresor list and not its: ", userTresorList);
     });
   }, [messageObj]);
   const pushMessageToTresor = (e) => {
@@ -31,7 +27,6 @@ function AddToTresor(props) {
       return;
     }
     const data = { ...messageObj, title: messageTitle };
-    console.log(data, "upload Tresor Id", uploadTresor);
     tresorService
       .pushItem(uploadTresor, data)
       .then((response) => console.log(response));

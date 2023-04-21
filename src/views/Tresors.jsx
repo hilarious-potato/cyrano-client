@@ -11,7 +11,6 @@ function Tresors() {
   const { authenticateUser, user } = useContext(AuthContext);
   const [tresorList, setTresorList] = useState(null);
   const fetchTresors = () => {
-    console.log("now we are in tresors and user is", user);
     if (user) {
       tresorService.fetchUserList().then((usersTresors) => {
         setTresorList(usersTresors);
@@ -24,7 +23,6 @@ function Tresors() {
   }, [user]);
   const handleDelete = (tresorId) => {
     tresorService.deleteTresor(tresorId).then((deletedTresor) => {
-      console.log("we deleted", deletedTresor);
       fetchTresors();
     });
   };

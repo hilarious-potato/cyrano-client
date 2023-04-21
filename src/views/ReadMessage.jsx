@@ -6,11 +6,10 @@ import Header from "../components/Header";
 import fetchMessage from "../utils/fetchMessage";
 
 import Typed from "typed.js";
+import Alert from "../components/Alert";
 
 const ReadMessage = () => {
-  console.log("WE Are in the read message comp");
   const { messageId } = useParams();
-  console.log(messageId);
   const [message, setMessage] = useState(null);
   const [password, setPassword] = useState("");
   const [showDialog, setShowDialog] = useState(true);
@@ -20,7 +19,6 @@ const ReadMessage = () => {
     const fragment = window.location.hash;
     if (fragment) {
       setPassword(fragment.slice(1));
-      // console.log("extracted pw");
     }
   }, []);
 
@@ -52,6 +50,7 @@ const ReadMessage = () => {
       setMessage(messageFromDb);
       renderMessage(messageFromDb);
     } catch (error) {
+      <Alert message="We could not fetch your message from the server, maybe it was deleted or your link is wrong" />;
       console.error(error);
     }
   };

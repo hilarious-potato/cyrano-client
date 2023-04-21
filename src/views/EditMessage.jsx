@@ -15,7 +15,6 @@ import Button from "../components/Button";
 
 export default function EditMessage(props) {
   const { editId } = useParams();
-  console.log("editId: ", editId);
 
   const [message, setMessage] = useState(null);
   const [password, setPassword] = useState("");
@@ -26,7 +25,6 @@ export default function EditMessage(props) {
     const fragment = window.location.hash;
     if (fragment) {
       setPassword(fragment.slice(1));
-      console.log("extracted pw");
     }
   }, []);
 
@@ -38,9 +36,7 @@ export default function EditMessage(props) {
     e.preventDefault();
     setMessage(null);
     try {
-      // console.log("Lets get the message");
       const messageFromDb = await fetchMessage(editId, password, true);
-      // console.log(messageFromDb);
       setMessage(messageFromDb);
       toggleDialog();
     } catch (error) {
@@ -53,9 +49,7 @@ export default function EditMessage(props) {
     const push = async () => {
       try {
         const newMessage = await updateMessage(message, editId, password);
-        console.log("new message: ", newMessage);
         setPostedMessage(newMessage);
-        console.log("newMessage: ", newMessage);
       } catch (error) {
         console.error(error);
       }

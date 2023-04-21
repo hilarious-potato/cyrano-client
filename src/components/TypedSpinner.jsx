@@ -16,13 +16,7 @@ const spinnerText = {
     "Do you trust <span class='text-primary italic'>cyrano</span>?",
   ],
   decrypt: [
-    "... decrypting!", // English
-    "...解密", // Chinese (Simplified)
-    "...解密", // Chinese (Traditional)
-    "...расшифровка", // Russian
-    "...decriptare", // Italian
-    "...desencriptar", // Spanish
-    "...decryptage", // French
+    "^500... decrypting!", // English
     "...entschlüsseln", // German
     "...descriptografar", // Portuguese
     "...dekryptering", // Danish
@@ -31,6 +25,12 @@ const spinnerText = {
     "...dekryptointi", // Finnish
     "...entschlüsselung", // German (Switzerland)
     "...dekryptering", // Norwegian
+    "...解密", // Chinese (Simplified)
+    "...解密", // Chinese (Traditional)
+    "...расшифровка", // Russian
+    "...decriptare", // Italian
+    "...desencriptar", // Spanish
+    "...decryptage", // French
     "...dešifriranje", // Croatian
     "...розшифрування", // Ukrainian
     "...entschlüsslung", // Luxembourgish

@@ -28,7 +28,6 @@ const CreateMessage = () => {
       try {
         const newMessage = await postMessage(message, password);
         setPostedMessage(newMessage);
-        console.log("newMessage: ", newMessage);
       } catch (error) {
         console.error(error);
       }

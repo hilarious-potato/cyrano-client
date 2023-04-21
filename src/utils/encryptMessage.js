@@ -3,7 +3,6 @@ import createKey from "./createKey";
 
 async function encryptMessage(message, password) {
   try {
-    console.log("encrypting message");
     const encoder = new TextEncoder();
     const encoded_message = encoder.encode(message);
     const salt = window.crypto.getRandomValues(new Uint8Array(16));
