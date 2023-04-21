@@ -39,7 +39,7 @@ function Tresor() {
         messages.map((message) => {
           return (
             <div
-              className="my-4 grid w-full gap-2 rounded-xl p-4 outline-1 hover:outline  hover:outline-gray-500"
+              className="my-4 mb-4 grid w-full gap-2 rounded-xl p-4 outline outline-1 outline-gray-500"
               key={message.messageId}
             >
               <h2 className="text-xl ">{message.title}</h2>
