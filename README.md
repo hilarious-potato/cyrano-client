@@ -10,7 +10,9 @@ Cyrano Client is the frontend for the Cyrano Service, which provides users a sim
 
 ## Authors
 
-- [denifi](https://www.github.com/denify)
+
+- [denefi](https://www.github.com/denefi)
+
 - [PDXIII](https://www.github.com/pdxiii)
 
 

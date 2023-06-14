@@ -65,7 +65,7 @@ export default function EditMessage(props) {
 
   return (
     <>
-      <section className="EditMessage xxl:w-1/3 relative lg:w-2/3">
+      <section className="EditMessage relative">
         <Header title="edit this a message" />
         <article className="relative overflow-auto">
           {!message && <TypedSpinner context="encrypt" />}
